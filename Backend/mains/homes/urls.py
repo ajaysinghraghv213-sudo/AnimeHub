@@ -1,9 +1,7 @@
-from django.contrib import admin
 from django.urls import path
 from homes import views
 from rest_framework_simplejwt.views import TokenRefreshView
 urlpatterns = [
-    path("admin/", admin.site.urls),
     path("registeration/", views.RegisterView.as_view()),
     path('verify-otp/', views.VerifyOTPView.as_view()),
     path('login/', views.LoginView.as_view()),
