@@ -1,0 +1,40 @@
+import {refreshAccessToken} from '@/app/function/refreshAccessToken'
+type ReplyPayload = {
+    post_id: string,
+    content: string
+}
+
+
+export const reply = async ({post_id, content}: ReplyPayload) => {
+
+    try {
+        let access = localStorage.getItem('accessToken')
+
+    let response = await fetch(`http://127.0.0.1:8000/reply/${post_id}/`,{
+
+        method : "POST",
+
+        headers  : {
+            "Content-Type" : "application/json",
+            "Authorization" : `Bearer ${access}`
+        },
+        body: JSON.stringify({content})
+    })
+    if (response.status === 401) {
+        access = await refreshAccessToken()
+        response = await fetch(`http://127.0.0.1:8000/reply/${post_id}/`,{
+            method : "POST",
+            headers  : {
+                "Content-Type" : "application/json",
+                "Authorization" : `Bearer ${access}`
+            },
+            body: JSON.stringify({content})
+        })
+    }
+    
+    return response
+    } catch (error) {
+        console.error("Failed to reply:", error)
+        return error
+    }
+}
