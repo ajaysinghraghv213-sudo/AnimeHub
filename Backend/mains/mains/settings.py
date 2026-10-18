@@ -131,6 +131,8 @@ if database_url := os.environ.get("DATABASE_URL"):
             ssl_require=not DEBUG,
         )
     }
+elif os.environ.get("RENDER"):
+    raise ValueError("DATABASE_URL must be set for the Render deployment.")
 else:
     DATABASES = {
         "default": {

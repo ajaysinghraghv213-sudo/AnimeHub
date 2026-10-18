@@ -1,3 +1,5 @@
+import logging
+
 from django.shortcuts import get_object_or_404, render
 from django.http import Http404
 from django.utils import timezone
@@ -26,6 +28,7 @@ from django.core.exceptions import ValidationError as DjangoValidationError
 
 UPDATES_CONFIRM_SALT = 'get-new-updates-confirm'
 UPDATES_CONFIRM_MAX_AGE = 60 * 60 * 24
+logger = logging.getLogger(__name__)
 # Create your views here.
 
 class RegisterView(APIView):
@@ -97,7 +100,8 @@ class CategoryListView(generics.ListAPIView):
             cache.set('categories', serializer.data, timeout=60*3)  # Cache for 180 seconds
             return Response(serializer.data)
         except Exception as e:
-            return Response({"error":'unable to fetch categories,please try again later.'}, status=status.HTTP_400_BAD_REQUEST)
+            logger.exception("Unable to fetch categories")
+            return Response({"error": "Unable to fetch categories."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
 
 class LogoutView(APIView):
@@ -231,7 +235,8 @@ class AllPostView(APIView):
             serializer = ArticleSerializer(posts, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as e:
-            return Response({"error": "Unable to fetch posts, please try again later."}, status=status.HTTP_400_BAD_REQUEST)
+            logger.exception("Unable to fetch posts")
+            return Response({"error": "Unable to fetch posts."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class ProfileView(APIView):
@@ -260,7 +265,8 @@ class RecentPostView(APIView):
             serializer = RecentPostSerializer(recent_posts, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as e:
-            return Response({"error": "Unable to fetch recent posts, please try again later."}, status=status.HTTP_400_BAD_REQUEST)
+            logger.exception("Unable to fetch recent posts")
+            return Response({"error": "Unable to fetch recent posts."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class FeaturedPostView(APIView):
@@ -270,7 +276,8 @@ class FeaturedPostView(APIView):
             serializer = FeaturedPostSerializer(featured_posts, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as e:
-            return Response({"error": "Unable to fetch featured posts, please try again later."}, status=status.HTTP_400_BAD_REQUEST)
+            logger.exception("Unable to fetch featured posts")
+            return Response({"error": "Unable to fetch featured posts."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class HomeCategoryView(APIView):
     def get(self, request, *args, **kwargs):
@@ -284,7 +291,8 @@ class HomeCategoryView(APIView):
             cache.set('categories4', serializer.data, timeout=60*3)  # Cache for 180 seconds
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as e:
-            return Response({"error": "Unable to fetch categories, please try again later."}, status=status.HTTP_400_BAD_REQUEST)
+            logger.exception("Unable to fetch home categories")
+            return Response({"error": "Unable to fetch categories."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class LikedPostView(APIView):
