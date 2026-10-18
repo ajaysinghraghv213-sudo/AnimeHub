@@ -37,19 +37,27 @@ DEBUG = os.environ.get(
 
 ALLOWED_HOSTS = [
     host.strip()
-    for host in os.environ.get("ALLOWED_HOSTS", "localhost,127.0.0.1,animehub-2-i11e.onrender.com").split(",")
+    for host in os.environ.get(
+        "ALLOWED_HOSTS",
+        "localhost,127.0.0.1,animehub-2-i11e.onrender.com"
+    ).split(",")
     if host.strip()
 ]
+
 if render_hostname := os.environ.get("RENDER_EXTERNAL_HOSTNAME"):
-    ALLOWED_HOSTS.append(render_hostname)
+    if render_hostname not in ALLOWED_HOSTS:
+        ALLOWED_HOSTS.append(render_hostname)
+
+
 CORS_ALLOWED_ORIGINS = [
     origin.strip().rstrip("/")
     for origin in os.environ.get(
         "CORS_ALLOWED_ORIGINS",
-        "https://anime-hub-1tbk.vercel.app",
+        "https://anime-hub-1tbk.vercel.app"
     ).split(",")
     if origin.strip()
 ]
+
 CSRF_TRUSTED_ORIGINS = [
     origin.strip()
     for origin in os.environ.get("CSRF_TRUSTED_ORIGINS", "").split(",")
@@ -58,7 +66,7 @@ CSRF_TRUSTED_ORIGINS = [
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SESSION_COOKIE_SECURE = not DEBUG
 CSRF_COOKIE_SECURE = not DEBUG
-CORS_ALLOWED_ORIGINS = ["https://anime-hub-1tbk.vercel.app"]
+
 
 # Application definition
 
