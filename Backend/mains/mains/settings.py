@@ -128,15 +128,16 @@ ASGI_APPLICATION = "mains.mains.asgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": os.environ.get("DB_NAME", "article"),
-        "USER": os.environ.get("DB_USER", "root"),
-        "PASSWORD": os.environ.get("DB_PASSWORD", "password"),
-        "HOST": os.environ.get("DB_HOST", "localhost"),
-        "PORT": os.environ.get("DB_PORT", "3306"),
+        "NAME": os.environ.get("DB_NAME"),
+        "USER": os.environ.get("DB_USER"),
+        "PASSWORD": os.environ.get("DB_PASSWORD"),
+        "HOST": os.environ.get("DB_HOST"),
+        "PORT": os.environ.get("DB_PORT"),
         "OPTIONS": {"charset": "utf8mb4"},
         "CONN_MAX_AGE": 600,
     }
 }
+
 
 if database_ssl_ca := os.environ.get("DB_SSL_CA"):
     DATABASES["default"]["OPTIONS"]["ssl"] = {"ca": database_ssl_ca}
