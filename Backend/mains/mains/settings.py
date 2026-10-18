@@ -37,7 +37,7 @@ DEBUG = os.environ.get(
 
 ALLOWED_HOSTS = [
     host.strip()
-    for host in os.environ.get("ALLOWED_HOSTS", "localhost,127.0.0.1","animehub-2-i11e.onrender.com").split(",")
+    for host in os.environ.get("ALLOWED_HOSTS", "localhost,127.0.0.1,animehub-2-i11e.onrender.com").split(",")
     if host.strip()
 ]
 if render_hostname := os.environ.get("RENDER_EXTERNAL_HOSTNAME"):
