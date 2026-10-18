@@ -1,16 +1,16 @@
 import {refreshAccessToken} from '@/app/function/refreshAccessToken'
 type ReplyPayload = {
-    post_id: string,
+    comment_id: number,
     content: string
 }
 
 
-export const reply = async ({post_id, content}: ReplyPayload) => {
+export const reply = async ({comment_id, content}: ReplyPayload) => {
 
     try {
         let access = localStorage.getItem('accessToken')
 
-    let response = await fetch(`http://127.0.0.1:8000/reply/${post_id}/`,{
+    let response = await fetch(`http://127.0.0.1:8000/reply/${comment_id}/`,{
 
         method : "POST",
 
@@ -22,7 +22,7 @@ export const reply = async ({post_id, content}: ReplyPayload) => {
     })
     if (response.status === 401) {
         access = await refreshAccessToken()
-        response = await fetch(`http://127.0.0.1:8000/reply/${post_id}/`,{
+        response = await fetch(`http://127.0.0.1:8000/reply/${comment_id}/`,{
             method : "POST",
             headers  : {
                 "Content-Type" : "application/json",

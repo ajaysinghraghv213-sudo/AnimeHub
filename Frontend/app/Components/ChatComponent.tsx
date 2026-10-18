@@ -595,8 +595,6 @@ useEffect(() => {
                   }
                   width="100%"
                   height={isDesktop ? 280 : 320}
-                  perRow={isDesktop ? 16 : 8}
-                  emojiSize={isDesktop ? 28 : 24}
                   lazyLoadEmojis
                   skinTonesDisabled
                   previewConfig={{ showPreview: false }}

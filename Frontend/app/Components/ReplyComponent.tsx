@@ -2,10 +2,10 @@ import {reply} from '@/app/function/reply'
 import {useState} from 'react'
 
 type ReplyComponentProps = {
-    post_id: number
+    comment_id: number
 }
 
-const ReplyComponent = ({post_id}: ReplyComponentProps) => {
+const ReplyComponent = ({comment_id}: ReplyComponentProps) => {
     const [content, setContent] = useState('')
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -13,7 +13,7 @@ const ReplyComponent = ({post_id}: ReplyComponentProps) => {
     const handleReply = async () => {
         try {
             setLoading(true)
-            const response = await reply({post_id, content})
+            const response = await reply({comment_id, content})
             console.log('Reply response:', response)
         } catch (error) {
             console.error('Failed to reply:', error)

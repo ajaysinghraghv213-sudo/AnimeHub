@@ -1,6 +1,6 @@
 'use client';
 ;
-import { useState } from "react";
+import { useState, type ChangeEvent } from "react";
 import {
   Mail,
   MessageSquare,
@@ -98,7 +98,7 @@ const contactMethods = [
 ];
 
 export default function Contact() {
-  const [openFaq, setOpenFaq] = useState(null);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: "",
@@ -107,14 +107,16 @@ export default function Contact() {
     message: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const response = await Emailus(formData);

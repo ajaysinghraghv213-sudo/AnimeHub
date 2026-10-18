@@ -99,14 +99,13 @@ const isDesktop = useMediaQuery("(min-width: 768px)");
             }
             width="100%"
             height={isDesktop ? 280 : 320}
-            perRow={isDesktop ? 16 : 8}
-            emojiSize={isDesktop ? 28 : 24}
             lazyLoadEmojis
             skinTonesDisabled
             previewConfig={{ showPreview: false }}
             searchPlaceHolder="Search emoji"
             style={
                 {
+                    "--epr-emoji-size": isDesktop ? "28px" : "24px",
                     "--epr-bg-color": "#17152f",
                     "--epr-category-label-bg-color": "#17152f",
                     "--epr-search-input-bg-color": "#0b0d24",

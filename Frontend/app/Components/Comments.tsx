@@ -247,7 +247,7 @@ const Comments = ({
 {/* Reply form */}
 {visibleReply === comment.id && (
   <div className="mt-2">
-    <ReplyComponent post_id={Number(comment.id)} />
+    <ReplyComponent comment_id={Number(comment.id)} />
   </div>
 )}
 
