@@ -2,8 +2,6 @@ FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-ENV PYTHONPATH="/app/mains"
-
 WORKDIR /app
 
 COPY ca.pem /app/ca.pem
@@ -25,4 +23,4 @@ COPY . .
 EXPOSE 8000
 
 # Start Django using Daphne (supports ASGI and Channels)
-CMD ["sh", "-c", "daphne -b 0.0.0.0 -p ${PORT:-8000} mains.asgi:application"]
+CMD ["sh", "-c", "daphne -b 0.0.0.0 -p ${PORT:-8000} mains.mains.asgi:application"]

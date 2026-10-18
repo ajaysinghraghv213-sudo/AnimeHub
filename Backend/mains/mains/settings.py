@@ -99,7 +99,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "mains.urls"
+ROOT_URLCONF = "mains.mains.urls"
 
 TEMPLATES = [
     {
@@ -116,8 +116,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "mains.wsgi.application"
-ASGI_APPLICATION = "mains.asgi.application"
+WSGI_APPLICATION = "mains.mains.wsgi.application"
+ASGI_APPLICATION = "mains.mains.asgi.application"
 
 
 # Database
@@ -125,25 +125,21 @@ ASGI_APPLICATION = "mains.asgi.application"
 
 
 
-import os
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": os.environ["DB_NAME"],
-        "USER": os.environ["DB_USER"],
-        "PASSWORD": os.environ["DB_PASSWORD"],
-        "HOST": os.environ["DB_HOST"],
-        "PORT": os.environ["DB_PORT"],
-        "OPTIONS": {
-            "charset": "utf8mb4",
-            "ssl": {
-                "ca": "/app/ca.pem",
-            },
-        },
+        "NAME": os.environ.get("DB_NAME", "article"),
+        "USER": os.environ.get("DB_USER", "root"),
+        "PASSWORD": os.environ.get("DB_PASSWORD", "password"),
+        "HOST": os.environ.get("DB_HOST", "localhost"),
+        "PORT": os.environ.get("DB_PORT", "3306"),
+        "OPTIONS": {"charset": "utf8mb4"},
         "CONN_MAX_AGE": 600,
     }
 }
+
+if database_ssl_ca := os.environ.get("DB_SSL_CA"):
+    DATABASES["default"]["OPTIONS"]["ssl"] = {"ca": database_ssl_ca}
 
 # Password validation
 # https://docs.djangoproject.com/en/6.1/ref/settings/#auth-password-validators
