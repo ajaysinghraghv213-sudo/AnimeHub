@@ -6,6 +6,8 @@ ENV PYTHONPATH="/app/mains"
 
 WORKDIR /app
 
+COPY ca.pem /app/ca.pem
+
 # Install system dependencies required by mysqlclient
 RUN apt-get update && apt-get install -y \
     build-essential \
