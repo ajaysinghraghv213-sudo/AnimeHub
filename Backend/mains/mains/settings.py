@@ -132,16 +132,25 @@ if database_url := os.environ.get("DATABASE_URL"):
         )
     }
 else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.mysql",
-            "NAME": os.environ.get("MYSQL_DATABASE", "article"),
-            "USER": os.environ.get("MYSQL_USER", "root"),
-            "PASSWORD": os.environ.get("MYSQL_PASSWORD", "password"),
-            "HOST": os.environ.get("MYSQL_HOST", "localhost"),
-            "PORT": os.environ.get("MYSQL_PORT", "3306"),
-        }
+   import os
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": os.environ["DB_NAME"],
+        "USER": os.environ["DB_USER"],
+        "PASSWORD": os.environ["DB_PASSWORD"],
+        "HOST": os.environ["DB_HOST"],
+        "PORT": os.environ["DB_PORT"],
+        "OPTIONS": {
+            "charset": "utf8mb4",
+            "ssl": {
+                "ca": "/etc/ssl/certs/ca-certificates.crt",
+            },
+        },
     }
+}
+    
 
 
 # Password validation
