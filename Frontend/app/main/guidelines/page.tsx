@@ -5,7 +5,19 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Loading from "./loading";
-const SECTIONS = [
+
+type GuidelineBlock =
+  | { p: string }
+  | { ul: string[] }
+  | { ladder: string[] };
+
+type GuidelineSection = {
+  id: string;
+  title: string;
+  blocks: GuidelineBlock[];
+};
+
+const SECTIONS: GuidelineSection[] = [
   {
     id: "respect",
     title: "Be Respectful to Everyone",
@@ -284,7 +296,7 @@ export default function GuidelinesPage() {
 
                 <div className="space-y-4 rounded-2xl border border-violet-500/15 bg-slate-900/60 p-5 sm:p-7">
                   {s.blocks.map((b, j) => {
-                    if (b.p)
+                    if ("p" in b)
                       return (
                         <p
                           key={j}
@@ -293,7 +305,7 @@ export default function GuidelinesPage() {
                           {b.p}
                         </p>
                       );
-                    if (b.ul)
+                    if ("ul" in b)
                       return (
                         <ul key={j} className="space-y-3">
                           {b.ul.map((item) => (
