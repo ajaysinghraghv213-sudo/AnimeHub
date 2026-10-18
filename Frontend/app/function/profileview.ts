@@ -9,7 +9,7 @@ export const profileView = async() => {
     try {
         let access = localStorage.getItem("accessToken");
 
-    let response = await fetch(`http://127.0.0.1:8000/profile/`, {
+    let response = await fetch(`https://animehub-2-i11e.onrender.com/profile/`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -21,7 +21,7 @@ export const profileView = async() => {
          await refreshAccessToken();
         access = localStorage.getItem("accessToken");
 
-        response = await fetch(`http://127.0.0.1:8000/profile/`, {
+        response = await fetch(`https://animehub-2-i11e.onrender.com/profile/`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -50,7 +50,7 @@ export const otherProfileView = async(userId: string) => {
     try {
         let access = localStorage.getItem("accessToken");
 
-    let response = await fetch(`http://127.0.0.1:8000/userprofile/${userId}/`, {
+    let response = await fetch(`https://animehub-2-i11e.onrender.com/userprofile/${userId}/`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -62,7 +62,7 @@ export const otherProfileView = async(userId: string) => {
          await refreshAccessToken();
         access = localStorage.getItem("accessToken");
 
-        response = await fetch(`http://127.0.0.1:8000/userprofile/${userId}/`, {
+        response = await fetch(`https://animehub-2-i11e.onrender.com/userprofile/${userId}/`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -104,7 +104,7 @@ export const updateProfile = async(profileData: any) => {
           }
         }
 
-    let response = await fetch(`http://127.0.0.1:8000/profile/update/`, {
+    let response = await fetch(`https://animehub-2-i11e.onrender.com/profile/update/`, {
         method: "PATCH",
         headers: {
             "Authorization": `Bearer ${access}`
@@ -116,7 +116,7 @@ export const updateProfile = async(profileData: any) => {
          await refreshAccessToken();
         access = localStorage.getItem("accessToken");
 
-        response = await fetch(`http://127.0.0.1:8000/profile/update/`, {
+        response = await fetch(`https://animehub-2-i11e.onrender.com/profile/update/`, {
             method: "PATCH",
             headers: {
                 "Authorization": `Bearer ${access}`

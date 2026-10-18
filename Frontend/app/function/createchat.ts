@@ -2,7 +2,7 @@ import { refreshAccessToken } from '@/app/function/refreshAccessToken';
 
 export const createChat = async (participantId: number | string) => {
     const send = (access: string | null) =>
-        fetch(`http://127.0.0.1:8000/chats/start/${participantId}/`, {
+        fetch(`https://animehub-2-i11e.onrender.com/chats/start/${participantId}/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

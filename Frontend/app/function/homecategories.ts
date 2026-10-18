@@ -5,7 +5,7 @@
 export const homeCategories = async () =>{
 
     try{
-        const response = await fetch(`http://127.0.0.1:8000/home-categories/`,{
+        const response = await fetch(`https://animehub-2-i11e.onrender.com/home-categories/`,{
 
 
         method : "GET",

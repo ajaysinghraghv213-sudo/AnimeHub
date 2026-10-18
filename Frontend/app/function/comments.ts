@@ -6,7 +6,7 @@ import { refreshAccessToken } from '@/app/function/refreshAccessToken';
     try {
 
         let access = localStorage.getItem('accessToken');
-        let response = await fetch(`http://127.0.0.1:8000/comments/${articleId}/`,{
+        let response = await fetch(`https://animehub-2-i11e.onrender.com/comments/${articleId}/`,{
 
 
         method: 'GET',
@@ -18,7 +18,7 @@ import { refreshAccessToken } from '@/app/function/refreshAccessToken';
     if(response.status===401){
         await refreshAccessToken();
         access = localStorage.getItem('accessToken');
-        response = await fetch(`http://127.0.0.1:8000/comments/${articleId}/`,{
+        response = await fetch(`https://animehub-2-i11e.onrender.com/comments/${articleId}/`,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ export const postComment = async (articleId: number, comment: string) => {
     try {
 
         let access = localStorage.getItem('accessToken');
-        let response = await fetch(`http://127.0.0.1:8000/comments/${articleId}/`, {
+        let response = await fetch(`https://animehub-2-i11e.onrender.com/comments/${articleId}/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ export const postComment = async (articleId: number, comment: string) => {
         if(response.status===401){
             await refreshAccessToken();
             access = localStorage.getItem('accessToken');
-            response = await fetch(`http://127.0.0.1:8000/comments/${articleId}/`, {
+            response = await fetch(`https://animehub-2-i11e.onrender.com/comments/${articleId}/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ export const postComment = async (articleId: number, comment: string) => {
 export const deleteComment = async (commentId: string | number) => {
     try {
         let access = localStorage.getItem('accessToken');
-        let response = await fetch(`http://127.0.0.1:8000/remove-comment/${commentId}/`, {
+        let response = await fetch(`https://animehub-2-i11e.onrender.com/remove-comment/${commentId}/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ export const deleteComment = async (commentId: string | number) => {
         if(response.status===401){
             await refreshAccessToken();
             access = localStorage.getItem('accessToken');
-            response = await fetch(`http://127.0.0.1:8000/remove-comment/${commentId}/`, {
+            response = await fetch(`https://animehub-2-i11e.onrender.com/remove-comment/${commentId}/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

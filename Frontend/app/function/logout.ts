@@ -8,7 +8,7 @@ const logout = async (): Promise<Response | null> => {
     const access = localStorage.getItem("accessToken");
     const refresh = localStorage.getItem("refreshToken");
 
-    const response = await fetch("http://127.0.0.1:8000/logout/", {
+    const response = await fetch("https://animehub-2-i11e.onrender.com/logout/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

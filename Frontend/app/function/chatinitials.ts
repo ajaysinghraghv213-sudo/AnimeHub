@@ -7,7 +7,7 @@ export  const getchats = async () => {
         
     let access = localStorage.getItem('accessToken');
 
-    let response = await fetch('http://127.0.0.1:8000/chats/', {
+    let response = await fetch('https://animehub-2-i11e.onrender.com/chats/', {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${access}`
@@ -15,7 +15,7 @@ export  const getchats = async () => {
     });
     if (response.status === 401) {
         access = await refreshAccessToken();
-        response = await fetch('http://127.0.0.1:8000/chats/', {
+        response = await fetch('https://animehub-2-i11e.onrender.com/chats/', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${access}`
@@ -38,7 +38,7 @@ export const getChatMessages = async (roomId: string) => {
    try {
      let access = localStorage.getItem('accessToken');
 
-    let response = await fetch(`http://127.0.0.1:8000/chats/${roomId}/messages/`, {
+    let response = await fetch(`https://animehub-2-i11e.onrender.com/chats/${roomId}/messages/`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${access}`
@@ -46,7 +46,7 @@ export const getChatMessages = async (roomId: string) => {
     });
     if (response.status === 401) {
         access = await refreshAccessToken();
-        response = await fetch(`http://127.0.0.1:8000/chats/${roomId}/messages/`, {
+        response = await fetch(`https://animehub-2-i11e.onrender.com/chats/${roomId}/messages/`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${access}`
@@ -69,7 +69,7 @@ export const  deletechatforcurrentuser = async (roomId: string) => {
     try {
         let access = localStorage.getItem('accessToken');
 
-        let response = await fetch(`http://127.0.0.1:8000/chats/${roomId}/messages/`, {
+        let response = await fetch(`https://animehub-2-i11e.onrender.com/chats/${roomId}/messages/`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${access}`
@@ -77,7 +77,7 @@ export const  deletechatforcurrentuser = async (roomId: string) => {
         });
         if (response.status === 401) {
             access = await refreshAccessToken();
-            response = await fetch(`http://127.0.0.1:8000/chats/${roomId}/messages/`, {
+            response = await fetch(`https://animehub-2-i11e.onrender.com/chats/${roomId}/messages/`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${access}`
@@ -104,7 +104,7 @@ export const deleteMessages = async (roomId: string,message_id: string) => {
     try {
         let access = localStorage.getItem('accessToken');
 
-        let response = await fetch(`http://127.0.0.1:8000/chats/${roomId}/messages/`, {
+        let response = await fetch(`https://animehub-2-i11e.onrender.com/chats/${roomId}/messages/`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -114,7 +114,7 @@ export const deleteMessages = async (roomId: string,message_id: string) => {
         });
         if (response.status === 401) {
             access = await refreshAccessToken();
-            response = await fetch(`http://127.0.0.1:8000/chats/${roomId}/messages/`, {
+            response = await fetch(`https://animehub-2-i11e.onrender.com/chats/${roomId}/messages/`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

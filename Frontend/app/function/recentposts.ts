@@ -5,7 +5,7 @@
 export const recentPosts = async () =>{
 
     try {
-        const response = await fetch('http://127.0.0.1:8000/recent-posts/',{
+        const response = await fetch('https://animehub-2-i11e.onrender.com/recent-posts/',{
 
         method : "GET",
 

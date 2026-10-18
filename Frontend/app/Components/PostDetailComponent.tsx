@@ -134,7 +134,7 @@ const PostDetailComponent = () => {
 
                     {post.image && (
                         <img
-                            src={`http://127.0.0.1:8000${post.image}`}
+                            src={`https://animehub-2-i11e.onrender.com${post.image}`}
                             alt={post.title}
                             className="mt-5 max-h-140 w-full rounded-xl border-2 border-violet-500/50 bg-slate-950 object-contain"
                         />
@@ -143,7 +143,7 @@ const PostDetailComponent = () => {
                     {post.video && (
                         <video
                         autoPlay
-                            src={`http://127.0.0.1:8000${post.video}`}
+                            src={`https://animehub-2-i11e.onrender.com${post.video}`}
                             controls
                             className="mt-5 max-h-140 w-full rounded-xl border-2 border-violet-500/50 bg-black"
                         />

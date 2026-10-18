@@ -6,7 +6,7 @@ type GetNewUpdatesData = {
 
 const GetNewUpdates = async ({ email }: GetNewUpdatesData) => {
     try {
-        const response = await fetch('http://127.0.0.1:8000/get-new-updates/', {
+        const response = await fetch('https://animehub-2-i11e.onrender.com/get-new-updates/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

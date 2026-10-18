@@ -6,7 +6,7 @@ export const userPost = async() =>{
    try {
      let access = localStorage.getItem('accessToken');
 
-    let response = await fetch(`http://127.0.0.1:8000/self-posts/`,{
+    let response = await fetch(`https://animehub-2-i11e.onrender.com/self-posts/`,{
 
 
         method : "GET",
@@ -18,7 +18,7 @@ export const userPost = async() =>{
     if(response.status === 401){
         await refreshAccessToken();
         access = localStorage.getItem('accessToken');
-        response = await fetch(`http://127.0.0.1:8000/self-posts/`,{
+        response = await fetch(`https://animehub-2-i11e.onrender.com/self-posts/`,{
             method : "GET",
             headers: {
                 "Authorization": `Bearer ${access}`

@@ -2,7 +2,7 @@ import { relatedPosts } from '../function/relatedposts';
 import { useEffect, useState } from 'react';
 import { Play } from 'lucide-react';
 import Link from 'next/link';
-const API = "http://127.0.0.1:8000";
+const API = "https://animehub-2-i11e.onrender.com";
 import AutoPlayVideo from './AutoplayVideo';
 interface RelatedPostProps {
   postId: number;

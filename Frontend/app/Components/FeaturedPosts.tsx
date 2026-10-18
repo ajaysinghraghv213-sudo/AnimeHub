@@ -139,12 +139,12 @@ const scrollByCard = (dir: 1 | -1) => {
                 <div className="relative aspect-16/10 overflow-hidden border-b border-violet-400/25 bg-slate-950 transition-colors group-hover:border-pink-400/60">
                     {post.video ? (
                        <AutoPlayVideo
-                           src={`http://127.0.0.1:8000${post.video}`}
+                           src={`https://animehub-2-i11e.onrender.com${post.video}`}
                            fill
                        />
                     ) : post.image ? (
                         <img
-                            src={`http://127.0.0.1:8000${post.image}`}
+                            src={`https://animehub-2-i11e.onrender.com${post.image}`}
                             alt={post.title}
                             className="h-full w-full object-cover transition duration-500 group-hover:scale-105 group-hover:saturate-125"
                         />
@@ -182,7 +182,7 @@ const scrollByCard = (dir: 1 | -1) => {
                             style={{ cursor: 'pointer' }}
                             
                                 src={post.author?.profile_pic
-                                    ? `http://127.0.0.1:8000${post.author.profile_pic}`
+                                    ? `https://animehub-2-i11e.onrender.com${post.author.profile_pic}`
                                     : '/file.svg'}
                                 alt={post.author?.username || "Anonymous"}
                                 className="h-9 w-9 shrink-0 rounded-full bg-slate-900 object-cover ring-2 ring-pink-400 ring-offset-2 ring-offset-[#12143a] transition hover:ring-cyan-300"

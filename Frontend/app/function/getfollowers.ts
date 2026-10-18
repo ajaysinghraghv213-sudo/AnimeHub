@@ -27,7 +27,7 @@ export const getFollowers = async () => {
 
         let access = localStorage.getItem('accessToken');
 
-        let response = await fetch(`http://127.0.0.1:8000/follow/`, {
+        let response = await fetch(`https://animehub-2-i11e.onrender.com/follow/`, {
 
             method: 'GET',
 
@@ -43,7 +43,7 @@ export const getFollowers = async () => {
 
             access = localStorage.getItem('accessToken');
 
-            response = await fetch(`http://127.0.0.1:8000/follow/`, {
+            response = await fetch(`https://animehub-2-i11e.onrender.com/follow/`, {
 
                 method: 'GET',
                 headers: {
@@ -77,7 +77,7 @@ export const getFollowers = async () => {
      let access = localStorage.getItem('accessToken');
    
 
-    let response = await fetch(`http://127.0.0.1:8000/otheruserfollow/${followerId}/`, {
+    let response = await fetch(`https://animehub-2-i11e.onrender.com/otheruserfollow/${followerId}/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ export const getFollowers = async () => {
     if (response.status === 401) {
         await refreshAccessToken();
         access = localStorage.getItem('accessToken');
-        response = await fetch(`http://127.0.0.1:8000/otheruserfollow/${followerId}/`, {
+        response = await fetch(`https://animehub-2-i11e.onrender.com/otheruserfollow/${followerId}/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -119,7 +119,7 @@ export const getothersFollowers = async (userId: string) => {
     try {
         let access = localStorage.getItem('accessToken');
 
-        let response = await fetch(`http://127.0.0.1:8000/otheruserfollow/${userId}/`, {
+        let response = await fetch(`https://animehub-2-i11e.onrender.com/otheruserfollow/${userId}/`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -130,7 +130,7 @@ export const getothersFollowers = async (userId: string) => {
         if (response.status === 401) {
             await refreshAccessToken();
             access = localStorage.getItem('accessToken');
-            response = await fetch(`http://127.0.0.1:8000/otheruserfollow/${userId}/`, {
+            response = await fetch(`https://animehub-2-i11e.onrender.com/otheruserfollow/${userId}/`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

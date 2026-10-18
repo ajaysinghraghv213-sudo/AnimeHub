@@ -29,7 +29,7 @@ export const createPost = async (title: string, content: string, category: strin
 
         const { body, contentType } = buildBody();
 
-        let response = await fetch("http://127.0.0.1:8000/create-post/", {
+        let response = await fetch("https://animehub-2-i11e.onrender.com/create-post/", {
             method: "POST",
             headers: {
                 ...(contentType ? { "Content-Type": contentType } : {}),
@@ -41,7 +41,7 @@ export const createPost = async (title: string, content: string, category: strin
         if(response.status===401){
             await refreshAccessToken();
             accessToken = localStorage.getItem("accessToken");
-            response = await fetch("http://127.0.0.1:8000/create-post/", {
+            response = await fetch("https://animehub-2-i11e.onrender.com/create-post/", {
                 method: "POST",
                 headers: {
                     ...(contentType ? { "Content-Type": contentType } : {}),

@@ -7,7 +7,7 @@ export const likedPosts = async () => {
     try {
         let access = localStorage.getItem("accessToken");
 
-        let response = await fetch(`http://127.0.0.1:8000/liked-posts/`,{
+        let response = await fetch(`https://animehub-2-i11e.onrender.com/liked-posts/`,{
 
             method : "GET",
 
@@ -19,7 +19,7 @@ export const likedPosts = async () => {
         if (response.status===401){
             await refreshAccessToken();
             access = localStorage.getItem("accessToken");
-            response = await fetch(`http://127.0.0.1:8000/liked-posts/`,{
+            response = await fetch(`https://animehub-2-i11e.onrender.com/liked-posts/`,{
 
                 method : "GET",
 
