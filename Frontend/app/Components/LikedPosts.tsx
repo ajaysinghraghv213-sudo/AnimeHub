@@ -2,7 +2,6 @@
 
 
 import { likedPosts } from "../function/likedposts";
-import { mediaUrl } from "@/app/function/mediaUrl";
 import { useEffect, useState } from "react";
 import { ThumbsDown, ThumbsUp } from 'lucide-react'
 import { UnlikePost } from "@/app/function/like";
@@ -102,18 +101,26 @@ const LikedPosts = () => {
 
                                 {post.post.video ? (
                                     <video
-                                        src={mediaUrl(post.post.video)}
+                                        src={
+                                            post.post.video.startsWith("http")
+                                                ? post.post.video
+                                                : `https://animehub-3-kbnb.onrender.com${post.post.video.startsWith("/") ? "" : "/"}${post.post.video}`
+                                        }
                                         controls
                                         className="h-full w-full object-cover"
                                     />
-                                ) : (
+                                ) : post.post.image ? (
                                     <img
-                                        src={mediaUrl(post.post.image)}
+                                        src={
+                                            post.post.image.startsWith("http")
+                                                ? post.post.image
+                                                : `https://animehub-3-kbnb.onrender.com${post.post.image.startsWith("/") ? "" : "/"}${post.post.image}`
+                                        }
                                         alt={post.post.title}
                                         className="h-full w-full object-cover transition-transform
                                                    duration-300 group-hover:scale-[1.02] group-hover:saturate-125"
                                     />
-                                )}
+                                ) : null}
 
                                 {/* Liked badge */}
                                 <div className="absolute left-3 top-3 flex items-center gap-1.5

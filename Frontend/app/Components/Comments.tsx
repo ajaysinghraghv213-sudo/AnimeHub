@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { fetchComments } from "@/app/function/comments";
-import { mediaUrl } from "@/app/function/mediaUrl";
 import { useDispatch, useSelector } from "react-redux";
 import { removeComment, setComments } from "@/app/redux/features/comments";
 import DeleteCommentButton from "./DeleteCommentButton";
@@ -166,7 +165,11 @@ const Comments = ({
                   >
                     {author?.profile_pic ? (
                       <img
-                        src={mediaUrl(author.profile_pic)}
+                        src={
+                          author.profile_pic.startsWith("http")
+                            ? author.profile_pic
+                            : `https://animehub-3-kbnb.onrender.com${author.profile_pic.startsWith("/") ? "" : "/"}${author.profile_pic}`
+                        }
                         alt={authorName}
                         className="size-full object-cover"
                       />
@@ -310,7 +313,11 @@ const Comments = ({
               >
                 {replyAuthor?.profile_pic ? (
                   <img
-                    src={mediaUrl(replyAuthor.profile_pic)}
+                    src={
+                      replyAuthor.profile_pic.startsWith("http")
+                        ? replyAuthor.profile_pic
+                        : `https://animehub-3-kbnb.onrender.com${replyAuthor.profile_pic.startsWith("/") ? "" : "/"}${replyAuthor.profile_pic}`
+                    }
                     alt={name}
                     loading="lazy"
                     className="size-full object-cover"

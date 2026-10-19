@@ -10,7 +10,6 @@ import { fetchOtherProfileView } from '@/app/redux/features/otherprofileview';
 import { fetchOtherFollowers, addFollower, removeOtherFollower } from '@/app/redux/features/otherfollowers';
 import { addFollowers } from '@/app/function/getfollowers';
 import { toast } from 'sonner';
-import { mediaUrl } from '@/app/function/mediaUrl';
 import { unfollowUser } from '@/app/function/unfollow';
 import { getchats } from '@/app/function/chatinitials';
 import { createChat } from '@/app/function/createchat';
@@ -155,7 +154,11 @@ const OtherProfileView = ({ userId }: { userId: string }) => {
                         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
                             <div className="-mt-14 flex items-end gap-4 sm:-mt-16">
                                 <img
-                                    src={mediaUrl(profile?.profile_pic) || '/file.svg'}
+                                    src={profile?.profile_pic
+                                        ? (profile.profile_pic.startsWith("http")
+                                            ? profile.profile_pic
+                                            : `https://animehub-3-kbnb.onrender.com${profile.profile_pic.startsWith("/") ? "" : "/"}${profile.profile_pic}`)
+                                        : '/file.svg'}
                                     alt="User avatar"
                                     className="h-28 w-28 rounded-3xl border-4 border-white bg-slate-900 object-cover shadow-[5px_5px_0_#ec4899] sm:h-32 sm:w-32"
                                 />
@@ -236,7 +239,11 @@ const OtherProfileView = ({ userId }: { userId: string }) => {
                                         <img
                                             onClick={() => handleProfileView(follower.id)}
                                             style={{ cursor: 'pointer' }}
-                                            src={mediaUrl(follower.profile_pic) || '/file.svg'}
+                                            src={follower.profile_pic
+                                                ? (follower.profile_pic.startsWith("http")
+                                                    ? follower.profile_pic
+                                                    : `https://animehub-3-kbnb.onrender.com${follower.profile_pic.startsWith("/") ? "" : "/"}${follower.profile_pic}`)
+                                                : '/file.svg'}
                                             alt={`${follower.username || 'Member'} avatar`}
                                             className="h-10 w-10 rounded-full bg-slate-900 object-cover ring-2 ring-pink-400 ring-offset-2 ring-offset-[#12143a] transition hover:ring-cyan-300"
                                         />
@@ -267,7 +274,11 @@ const OtherProfileView = ({ userId }: { userId: string }) => {
                                         <img
                                             onClick={() => handleProfileView(followedUser.id)}
                                             style={{ cursor: 'pointer' }}
-                                            src={mediaUrl(followedUser.profile_pic) || '/file.svg'}
+                                            src={followedUser.profile_pic
+                                                ? (followedUser.profile_pic.startsWith("http")
+                                                    ? followedUser.profile_pic
+                                                    : `https://animehub-3-kbnb.onrender.com${followedUser.profile_pic.startsWith("/") ? "" : "/"}${followedUser.profile_pic}`)
+                                                : '/file.svg'}
                                             alt={`${followedUser.username || 'Member'} avatar`}
                                             className="h-10 w-10 rounded-full bg-slate-900 object-cover ring-2 ring-pink-400 ring-offset-2 ring-offset-[#12143a] transition hover:ring-cyan-300"
                                         />

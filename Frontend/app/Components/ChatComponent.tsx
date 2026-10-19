@@ -4,7 +4,6 @@ import { chat, sendChatMessage, ChatRequest } from '@/app/function/chat';
 import { useEffect,  useRef, useState } from 'react';
 import { getChatMessages, deleteMessages } from '@/app/function/chatinitials';
 import { getChatParticipants } from '@/app/function/getchatparticipants';
-import { mediaUrl } from '@/app/function/mediaUrl';
 import { blockUser, unblockUser, isUserBlocked } from '../function/block_user';
 import EmojiPicker, { Theme, EmojiClickData } from 'emoji-picker-react';
 import Link  from 'next/link';
@@ -382,7 +381,11 @@ useEffect(() => {
         >
         {otherParticipant.profile_pic ? (
           <img
-            src={mediaUrl(otherParticipant.profile_pic)}
+            src={
+              otherParticipant.profile_pic.startsWith("http")
+                ? otherParticipant.profile_pic
+                : `https://animehub-3-kbnb.onrender.com${otherParticipant.profile_pic.startsWith("/") ? "" : "/"}${otherParticipant.profile_pic}`
+            }
             alt={`${otherParticipant.username} avatar`}
             className="size-10 shrink-0 rounded-full bg-violet-500/30 object-cover ring-2 ring-pink-400/70"
           />

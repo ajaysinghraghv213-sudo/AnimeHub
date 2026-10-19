@@ -2,7 +2,6 @@ import { relatedPosts } from '../function/relatedposts';
 import { useEffect, useState } from 'react';
 import { Play } from 'lucide-react';
 import Link from 'next/link';
-import { mediaUrl } from '@/app/function/mediaUrl';
 import AutoPlayVideo from './AutoplayVideo';
 interface RelatedPostProps {
   postId: number;
@@ -65,7 +64,11 @@ const RelatedPost = ({ postId }: RelatedPostProps) => {
                             <div className="relative aspect-square w-28 shrink-0 overflow-hidden border-r-2 border-violet-500/60 bg-slate-950 transition-colors group-hover:border-pink-400 sm:aspect-5/3 sm:w-full sm:border-b-2 sm:border-r-0">
                                 {post.image ? (
                                     <img
-                                        src={mediaUrl(post.image)}
+                                        src={
+                                            post.image.startsWith("http")
+                                                ? post.image
+                                                : `https://animehub-3-kbnb.onrender.com${post.image.startsWith("/") ? "" : "/"}${post.image}`
+                                        }
                                         alt=""
                                         loading="lazy"
                                         className="h-full w-full object-cover transition duration-500 group-hover:scale-105 group-hover:saturate-125"
@@ -73,7 +76,14 @@ const RelatedPost = ({ postId }: RelatedPostProps) => {
                                 ) : (
                                     <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#ec4899_0%,#8b5cf6_55%,#22d3ee_100%)]">
                                         {post.video ? (
-                                            <AutoPlayVideo src={mediaUrl(post.video)} fill />
+                                            <AutoPlayVideo
+                                                src={
+                                                    post.video.startsWith("http")
+                                                        ? post.video
+                                                        : `https://animehub-3-kbnb.onrender.com${post.video.startsWith("/") ? "" : "/"}${post.video}`
+                                                }
+                                                fill
+                                            />
                                         ) : (
                                             <span className="text-3xl font-black italic text-white/40 sm:text-5xl">Aa</span>
                                         )}
@@ -94,7 +104,11 @@ const RelatedPost = ({ postId }: RelatedPostProps) => {
 
                                 <div className="flex items-center gap-2 text-xs text-indigo-300">
                                     <img
-                                        src={mediaUrl(post.author?.profile_pic) || '/file.svg'}
+                                        src={post.author?.profile_pic
+                                            ? (post.author.profile_pic.startsWith("http")
+                                                ? post.author.profile_pic
+                                                : `https://animehub-3-kbnb.onrender.com${post.author.profile_pic.startsWith("/") ? "" : "/"}${post.author.profile_pic}`)
+                                            : '/file.svg'}
                                         alt=""
                                         className="size-6 shrink-0 rounded-full bg-slate-900 object-cover ring-2 ring-pink-400"
                                     />

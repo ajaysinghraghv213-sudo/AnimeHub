@@ -9,7 +9,6 @@ import CreateComment from './CreateComment';
 import Comments from './Comments';
 import { Check, LoaderCircle, Share2, ThumbsUp, Trash2 } from 'lucide-react';
 import { toast } from 'sonner';
-import { mediaUrl } from '../function/mediaUrl';
 import { likePost, UnlikePost } from '../function/like';
 import { deletePost } from '../function/deletepost';
 
@@ -124,7 +123,11 @@ const SelfPostCard = ({
             {/* Image */}
             {post.image && (
                 <img
-                    src={mediaUrl(post.image)}
+                    src={
+                        post.image.startsWith("http")
+                            ? post.image
+                            : `https://animehub-3-kbnb.onrender.com${post.image.startsWith("/") ? "" : "/"}${post.image}`
+                    }
                     alt={post.title}
                     className="mt-5 max-h-[35rem] w-full rounded-xl border-2 border-violet-500/50 bg-slate-950 object-contain"
                 />
@@ -132,7 +135,13 @@ const SelfPostCard = ({
 
             {/* Video */}
             {post.video && (
-                <AutoPlayVideo src={mediaUrl(post.video)} />
+                <AutoPlayVideo
+                    src={
+                        post.video.startsWith("http")
+                            ? post.video
+                            : `https://animehub-3-kbnb.onrender.com${post.video.startsWith("/") ? "" : "/"}${post.video}`
+                    }
+                />
             )}
             <button
                                     type="button"
