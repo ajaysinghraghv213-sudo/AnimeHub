@@ -36,17 +36,15 @@ DEBUG = os.environ.get(
 ).lower() in {"1", "true", "yes"}
 
 ALLOWED_HOSTS = [
-    host.strip()
-    for host in os.environ.get(
-        "ALLOWED_HOSTS",
-        "animehub-3-kbnb.onrender.com"
-    ).split(",")
-    if host.strip()
+    "animehub-3-kbnb.onrender.com",
+    "localhost",
+    "127.0.0.1",
 ]
 
 if render_hostname := os.environ.get("RENDER_EXTERNAL_HOSTNAME"):
     if render_hostname not in ALLOWED_HOSTS:
         ALLOWED_HOSTS.append(render_hostname)
+
 
 
 CORS_ALLOWED_ORIGINS = [
