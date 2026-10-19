@@ -210,10 +210,9 @@ const SelfPostCard = ({
                 <div className="mt-4 w-full border-t border-violet-500/25 pt-1">
                     {access ? (
                         <>
-                            <div className="max-h-[50vh] overflow-y-auto overscroll-contain pr-1 [scrollbar-color:#8b5cf6_transparent] [scrollbar-width:thin] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-violet-500/60 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-violet-500/10 hover:[&::-webkit-scrollbar-thumb]:bg-violet-400 sm:max-h-96">
-                                <Comments articleId={post.id} onClose={() => setVisibleComment(null)} />
-                            </div>
-                            <CreateComment articleId={post.id} />
+                            <Comments articleId={post.id} onClose={() => setVisibleComment(null)}>
+                                <CreateComment articleId={post.id} />
+                            </Comments>
                         </>
                     ) : (
                         <p className="mt-4 rounded-lg border border-pink-400/30 bg-pink-500/10 px-4 py-3 text-sm leading-6 text-pink-100">

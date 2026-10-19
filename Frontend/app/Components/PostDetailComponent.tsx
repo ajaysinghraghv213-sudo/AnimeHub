@@ -184,8 +184,9 @@ const PostDetailComponent = () => {
 
                     {showComments && (
                         <>
-                            <Comments articleId={post.id} onClose={() => setShowComments(false)} />
-                            <CreateComment articleId={post.id} />
+                            <Comments articleId={post.id} onClose={() => setShowComments(false)}>
+                                <CreateComment articleId={post.id} />
+                            </Comments>
                         </>
                     )}
                 </div>

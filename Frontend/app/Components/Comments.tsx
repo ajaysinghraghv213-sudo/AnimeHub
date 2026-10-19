@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { fetchComments } from "@/app/function/comments";
 import { useDispatch, useSelector } from "react-redux";
 import { removeComment, setComments } from "@/app/redux/features/comments";
@@ -29,9 +29,11 @@ type Comment = {
 const Comments = ({
   articleId,
   onClose,
+  children,
 }: {
   articleId: string | number;
   onClose: () => void;
+  children?: ReactNode;
 }) => {
   const comments = useSelector((state: any) => state.comments.comments);
   const [isLoading, setIsLoading] = useState(true);
@@ -47,6 +49,9 @@ const Comments = ({
   );
   const [replyContent, setReplyContent] = useState("");
   const dispatch = useDispatch();
+  const orderedComments = [...comments].sort(
+    (a: Comment, b: Comment) => Number(b.id) - Number(a.id),
+  );
 
   useEffect(() => {
     setCurrentUserId(localStorage.getItem("user_id"));
@@ -110,6 +115,8 @@ const Comments = ({
         </button>
       </div>
 
+      {children}
+
       {isLoading ? (
         <div className="mt-5 space-y-3" aria-live="polite">
           {[1, 2].map((item) => (
@@ -134,8 +141,8 @@ const Comments = ({
           Comments couldn&apos;t be loaded. Please try again later.
         </div>
       ) : comments.length > 0 ? (
-        <div className="mt-4 space-y-3">
-          {comments.map((comment: Comment) => {
+        <div className="mt-4 max-h-[50vh] space-y-3 overflow-y-auto rounded-xl border border-violet-500/25 bg-black/10 p-2 sm:max-h-[28rem] sm:p-3 [scrollbar-width:thin] [scrollbar-color:#8b5cf6_transparent] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-violet-500/10 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-violet-500/60">
+          {orderedComments.map((comment: Comment) => {
             const author =
               typeof comment.author === "object" && comment.author !== null
                 ? comment.author

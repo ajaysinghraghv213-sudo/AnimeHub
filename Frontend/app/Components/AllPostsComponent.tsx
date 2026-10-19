@@ -243,23 +243,12 @@ const AllPostsComponent = () => {
                   <>
                     {access && (
                       <>
-                        <div
-                          className="mt-4 border-t border-violet-400/15 pt-4
-            max-h-[50vh] overflow-y-auto overscroll-contain pr-1 sm:max-h-96
-            [scrollbar-width:thin] [scrollbar-color:#8b5cf6_transparent]
-            [&::-webkit-scrollbar]:w-2
-            [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-violet-500/10
-            [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-violet-500/60
-            hover:[&::-webkit-scrollbar-thumb]:bg-violet-400
-          "
+                        <Comments
+                          articleId={post.id}
+                          onClose={() => setVisibleComment(null)}
                         >
-                          <Comments
-                            articleId={post.id}
-                            onClose={() => setVisibleComment(null)}
-                          />
-                        </div>
-
-                        <CreateComment articleId={post.id} />
+                          <CreateComment articleId={post.id} />
+                        </Comments>
                       </>
                     )}
                     {!access && (

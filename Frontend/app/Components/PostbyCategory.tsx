@@ -185,8 +185,9 @@ const PostbyCategory = () => {
                                 {/* Comments */}
                                 {visibleComment === post.id && (
                                     <>
-                                        <Comments articleId={post.id} onClose={() => setVisibleComment(null)} />
-                                        <CreateComment articleId={post.id} />
+                                        <Comments articleId={post.id} onClose={() => setVisibleComment(null)}>
+                                            <CreateComment articleId={post.id} />
+                                        </Comments>
                                     </>
                                 )}
                                

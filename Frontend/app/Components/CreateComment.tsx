@@ -26,6 +26,7 @@ const CreateComment = ({ articleId }: { articleId: number }) => {
             const newComment = await postComment(articleId, comment);
             dispatch(setComments([...comments, newComment]));
             setComment('');
+            setShowEmojiPicker(false);
             toast.success('Comment posted');
         } catch (error) {
             toast.error(error instanceof Error ? error.message : 'Failed to post comment');
@@ -58,12 +59,12 @@ const isDesktop = useMediaQuery("(min-width: 768px)");
     return (
         <form
             onSubmit={handleSubmit}
-            className="mt-4 rounded-lg border border-violet-500/30 bg-[#0b0d24]/55 p-3 sm:p-4"
+            className="mt-4 rounded-lg border border-violet-500/30 bg-[#0b0d24]/55 p-3"
         >
-            <div className="mb-3">
+            <div className="mb-2">
                 <div>
                     <p className="text-sm font-semibold text-white">Add a comment</p>
-                    <p className="mt-1 text-xs leading-5 text-indigo-300">Keep it useful, kind, and on topic.</p>
+                    <p className="mt-1 hidden text-xs leading-5 text-indigo-300 sm:block">Keep it useful, kind, and on topic.</p>
                 </div>
             </div>
             <textarea
@@ -71,20 +72,20 @@ const isDesktop = useMediaQuery("(min-width: 768px)");
                 onChange={(e) => setComment(e.target.value)}
                 placeholder="Write a comment..."
                 aria-label="Write a comment"
-                rows={4}
-                className="min-h-24 w-full resize-y rounded-lg border border-violet-500/35 bg-[#17152f] px-3 py-3 text-base leading-6 text-white outline-none transition placeholder:text-indigo-400 focus:border-cyan-300/70 focus:ring-2 focus:ring-cyan-300/15 sm:text-sm"
+                rows={2}
+                className="min-h-16 w-full resize-y rounded-lg border border-violet-500/35 bg-[#17152f] px-3 py-2.5 text-base leading-6 text-white outline-none transition placeholder:text-indigo-400 focus:border-cyan-300/70 focus:ring-2 focus:ring-cyan-300/15 sm:min-h-20 sm:text-sm"
             />
-            <div className="mt-3 flex justify-between items-center">
+            <div className="mt-3 flex items-center gap-2">
                 <button
                     type="button"
                     onClick={() => setShowEmojiPicker(!showEmojiPicker)}
-                    className="inline-flex items-center justify-center rounded-lg bg-violet-500 px-3 py-2 text-sm font-bold text-white transition hover:bg-violet-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-400"
+                    className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-lg bg-violet-500 px-3 py-2 text-sm font-bold text-white transition hover:bg-violet-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-400"
                 >
-                    {showEmojiPicker ? "Close Emoji Picker" : "Add Emoji"}
+                    {showEmojiPicker ? "Close" : "Add Emoji"}
                 </button>
                 <button
                     type="submit"
-                    className="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-cyan-300 px-5 text-sm font-bold text-slate-950 transition hover:bg-cyan-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-200 sm:w-auto"
+                    className="inline-flex min-h-11 flex-1 items-center justify-center rounded-lg bg-cyan-300 px-5 text-sm font-bold text-slate-950 transition hover:bg-cyan-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-200 sm:flex-none"
                 >
                     Post comment
                     <span className="ml-2" aria-hidden="true">-&gt;</span>
@@ -98,7 +99,7 @@ const isDesktop = useMediaQuery("(min-width: 768px)");
                 setComment((prev) => prev + emojiData.emoji)
             }
             width="100%"
-            height={isDesktop ? 280 : 320}
+            height={isDesktop ? 280 : 260}
             lazyLoadEmojis
             skinTonesDisabled
             previewConfig={{ showPreview: false }}
