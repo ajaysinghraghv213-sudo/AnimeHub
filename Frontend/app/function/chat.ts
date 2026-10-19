@@ -11,7 +11,7 @@ export type ChatSocketHandlers = {
 };
 
 const getChatSocketUrl = (roomId: string) => {
-  const baseUrl = process.env.NEXT_PUBLIC_WS_URL ?? "ws://127.0.0.1:8000";
+  const baseUrl = process.env.NEXT_PUBLIC_WS_URL ?? " https://animehub-3-kbnb.onrender.com";
   const access = localStorage.getItem("accessToken") ?? "";
   const url = new URL(`/ws/chat/${roomId}/?token=${access}`, baseUrl);
 
