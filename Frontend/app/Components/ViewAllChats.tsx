@@ -5,6 +5,7 @@ import { MessageCircle } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { deletechatforcurrentuser } from '@/app/function/chatinitials';
+import { mediaUrl } from '@/app/function/mediaUrl';
 
 
 type Participant = {
@@ -20,8 +21,6 @@ type ChatRoom = {
     participants: Participant[] | null;
     created_at: string;
 };
-
-const API = ' https://animehub-3-kbnb.onrender.com';
 
 export default function ViewAllChats() {
     const [chats, setChats] = useState<ChatRoom[]>([]);
@@ -139,7 +138,7 @@ export default function ViewAllChats() {
                                 >
                                     {other.profile_pic ? (
                                         <img
-                                            src={`${API}${other.profile_pic}`}
+                                            src={mediaUrl(other.profile_pic)}
                                             alt={`${other.username} avatar`}
                                             className="size-12 shrink-0 rounded-full bg-violet-500/30 object-cover ring-2 ring-pink-400/70"
                                         />

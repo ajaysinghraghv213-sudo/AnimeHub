@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import { Pencil, RefreshCw } from 'lucide-react';
 import { fetchOtherProfileView } from '../redux/features/otherprofileview';
 import { useUser } from '@/context/userContext';
+import { mediaUrl } from '@/app/function/mediaUrl';
 
 type Profile = {
     profile_pic: string | null;
@@ -114,9 +115,7 @@ const ProfileViewComponent = () => {
                         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
                             <div className="-mt-14 flex items-end gap-4 sm:-mt-16">
                                 <img
-                                    src={displayedProfile.profile_pic
-                                        ? ` https://animehub-3-kbnb.onrender.com${displayedProfile.profile_pic}`
-                                        : '/file.svg'}
+                                    src={mediaUrl(displayedProfile.profile_pic) || '/file.svg'}
                                     alt={`${displayedProfile.username}'s avatar`}
                                     className="h-28 w-28 rounded-3xl border-4 border-white bg-slate-900 object-cover shadow-[5px_5px_0_#ec4899] sm:h-32 sm:w-32"
                                 />
@@ -194,9 +193,7 @@ const ProfileViewComponent = () => {
                                         <img
                                             onClick={() => handleProfileView(follower.id)}
                                             style={{ cursor: 'pointer' }}
-                                            src={follower.profile_pic
-                                                ? ` https://animehub-3-kbnb.onrender.com${follower.profile_pic}`
-                                                : '/file.svg'}
+                                            src={mediaUrl(follower.profile_pic) || '/file.svg'}
                                             alt={`${follower.username || 'Member'} avatar`}
                                             className="h-10 w-10 rounded-full bg-slate-900 object-cover ring-2 ring-pink-400 ring-offset-2 ring-offset-[#12143a] transition hover:ring-cyan-300"
                                         />
@@ -228,9 +225,7 @@ const ProfileViewComponent = () => {
                                             onClick={() => handleProfileView(followedUser.id)}
                                             style={{ cursor: 'pointer' }}
 
-                                            src={followedUser.profile_pic
-                                                ? ` https://animehub-3-kbnb.onrender.com${followedUser.profile_pic}`
-                                                : '/file.svg'}
+                                            src={mediaUrl(followedUser.profile_pic) || '/file.svg'}
                                             alt={`${followedUser.username || 'Member'} avatar`}
                                             className="h-10 w-10 rounded-full bg-slate-900 object-cover ring-2 ring-pink-400 ring-offset-2 ring-offset-[#12143a] transition hover:ring-cyan-300"
                                         />

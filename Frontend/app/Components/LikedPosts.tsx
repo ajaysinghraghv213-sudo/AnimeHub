@@ -2,6 +2,7 @@
 
 
 import { likedPosts } from "../function/likedposts";
+import { mediaUrl } from "@/app/function/mediaUrl";
 import { useEffect, useState } from "react";
 import { ThumbsDown, ThumbsUp } from 'lucide-react'
 import { UnlikePost } from "@/app/function/like";
@@ -101,13 +102,13 @@ const LikedPosts = () => {
 
                                 {post.post.video ? (
                                     <video
-                                        src={` https://animehub-3-kbnb.onrender.com${post.post.video}`}
+                                        src={mediaUrl(post.post.video)}
                                         controls
                                         className="h-full w-full object-cover"
                                     />
                                 ) : (
                                     <img
-                                        src={` https://animehub-3-kbnb.onrender.com${post.post.image}`}
+                                        src={mediaUrl(post.post.image)}
                                         alt={post.post.title}
                                         className="h-full w-full object-cover transition-transform
                                                    duration-300 group-hover:scale-[1.02] group-hover:saturate-125"

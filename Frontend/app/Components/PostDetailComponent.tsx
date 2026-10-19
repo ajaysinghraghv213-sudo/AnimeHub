@@ -9,6 +9,7 @@ import Comments from "@/app/Components/Comments";
 import CreateComment from "@/app/Components/CreateComment";
 import { toast } from 'sonner';
 import RelatedPost from "@/app/Components/RelatedPost";
+import { mediaUrl } from "@/app/function/mediaUrl";
 
 const PostDetailComponent = () => {
     const { id } = useParams<{ id: string }>();
@@ -133,21 +134,19 @@ const PostDetailComponent = () => {
                     </p>
 
                     {post.image && (
-                        <img
-                            src={` https://animehub-3-kbnb.onrender.com${post.image}`}
-                            alt={post.title}
-                            className="mt-5 max-h-140 w-full rounded-xl border-2 border-violet-500/50 bg-slate-950 object-contain"
-                        />
-                    )}
-
-                    {post.video && (
-                        <video
-                        autoPlay
-                            src={` https://animehub-3-kbnb.onrender.com${post.video}`}
-                            controls
-                            className="mt-5 max-h-140 w-full rounded-xl border-2 border-violet-500/50 bg-black"
-                        />
-                    )}
+    <img
+        src={mediaUrl(post.image)}
+        alt={post.title}
+        className="mt-5 max-h-140 w-full rounded-xl border-2 border-violet-500/50 bg-slate-950 object-contain"
+    />
+)}
+{post.video && (
+    <video
+        src={mediaUrl(post.video)}
+        controls
+        className="mt-5 max-h-140 w-full rounded-xl bg-slate-950 object-contain"
+    />
+)}
 
                     <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-violet-400/15 pt-3">
                     <button

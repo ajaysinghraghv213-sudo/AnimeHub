@@ -7,6 +7,7 @@ import { likePost, UnlikePost } from "@/app/function/like";
 import Comments from "@/app/Components/Comments";
 import CreateComment from "@/app/Components/CreateComment";
 import { toast } from "sonner";
+import { mediaUrl } from "@/app/function/mediaUrl";
 import Link from "next/link";
 
 const AllPostsComponent = () => {
@@ -92,7 +93,7 @@ const AllPostsComponent = () => {
                   <span className="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-violet-500/25 text-sm font-bold text-cyan-100 ring-1 ring-white/10">
                     {post.author?.profile_pic ? (
                       <img
-                        src={` https://animehub-3-kbnb.onrender.com${post.author.profile_pic}`}
+                        src={mediaUrl(post.author.profile_pic)}
                         alt=""
                         loading="lazy"
                         className="size-full object-cover"
@@ -160,7 +161,7 @@ const AllPostsComponent = () => {
                 {/* Image */}
                 {post.image && (
                   <img
-                    src={` https://animehub-3-kbnb.onrender.com${post.image}`}
+                    src={mediaUrl(post.image)}
                     alt={post.title}
                     loading="lazy"
                     className="mt-4 max-h-[35rem] w-full rounded-lg border border-violet-400/20 bg-slate-950/70 object-contain"
@@ -169,7 +170,7 @@ const AllPostsComponent = () => {
 
                 {/* Video */}
                 {post.video && (
-                  <AutoPlayVideo src={` https://animehub-3-kbnb.onrender.com${post.video}`} />
+                  <AutoPlayVideo src={mediaUrl(post.video)} />
                 )}
                 <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-violet-400/15 pt-3">
                 <button

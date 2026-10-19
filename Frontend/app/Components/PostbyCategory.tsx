@@ -8,6 +8,7 @@ import Comments from "@/app/Components/Comments";
 import { likePost, UnlikePost } from "@/app/function/like";
 import CreateComment from "@/app/Components/CreateComment";
 import { toast } from 'sonner';
+import { mediaUrl } from "@/app/function/mediaUrl";
 const PostbyCategory = () => {
 
     const [posts,setPosts] = useState([]);
@@ -120,7 +121,7 @@ const PostbyCategory = () => {
                                 {/* Image */}
                                 {post.image && (
                                         <img
-                                        src={post.image}
+                                        src={mediaUrl(post.image)}
                                         alt={post.title}
                                             className="mt-5 max-h-[35rem] w-full rounded-xl border-2 border-violet-500/50 bg-slate-950 object-contain"
                                     />
@@ -129,7 +130,7 @@ const PostbyCategory = () => {
                                 {/* Video */}
                                 {post.video && (
                                     <AutoPlayVideo
-                                        src={post.video}
+                                        src={mediaUrl(post.video)}
                                     />
                                 )}
                                 <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-violet-400/15 pt-3">

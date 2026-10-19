@@ -1,6 +1,7 @@
 'use client'
 
 import {getFeaturedPosts} from '@/app/function/featuredposts'
+import { mediaUrl } from '@/app/function/mediaUrl'
 import {useState,useEffect,useCallback,useRef} from 'react'
 import { useDispatch } from 'react-redux';
 import { fetchOtherProfileView } from '@/app/redux/features/otherprofileview';
@@ -139,12 +140,12 @@ const scrollByCard = (dir: 1 | -1) => {
                 <div className="relative aspect-16/10 overflow-hidden border-b border-violet-400/25 bg-slate-950 transition-colors group-hover:border-pink-400/60">
                     {post.video ? (
                        <AutoPlayVideo
-                           src={` https://animehub-3-kbnb.onrender.com${post.video}`}
+                           src={mediaUrl(post.video)}
                            fill
                        />
                     ) : post.image ? (
                         <img
-                            src={` https://animehub-3-kbnb.onrender.com${post.image}`}
+                            src={mediaUrl(post.image)}
                             alt={post.title}
                             className="h-full w-full object-cover transition duration-500 group-hover:scale-105 group-hover:saturate-125"
                         />
@@ -181,9 +182,7 @@ const scrollByCard = (dir: 1 | -1) => {
                             }}
                             style={{ cursor: 'pointer' }}
                             
-                                src={post.author?.profile_pic
-                                    ? ` https://animehub-3-kbnb.onrender.com${post.author.profile_pic}`
-                                    : '/file.svg'}
+                                src={mediaUrl(post.author?.profile_pic) || '/file.svg'}
                                 alt={post.author?.username || "Anonymous"}
                                 className="h-9 w-9 shrink-0 rounded-full bg-slate-900 object-cover ring-2 ring-pink-400 ring-offset-2 ring-offset-[#12143a] transition hover:ring-cyan-300"
                             />
