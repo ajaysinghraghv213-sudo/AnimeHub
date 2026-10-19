@@ -1,6 +1,6 @@
 ﻿import {refreshAccessToken} from '@/app/function/refreshAccessToken'
 
-const BLOCK_URL = 'https://animehub-2-i11e.onrender.com/blocked-users/'
+const BLOCK_URL = ' https://animehub-3-kbnb.onrender.com/blocked-users/'
 
 // The blocked user's id is sent in the body; GET requests must not have one.
 const authFetch = async (method: string, userId?: string | number) => {

@@ -7,7 +7,7 @@ export const categories = async() =>{
    try {
      
 
-    let response = await fetch(`https://animehub-2-i11e.onrender.com/categories/`, {
+    let response = await fetch(` https://animehub-3-kbnb.onrender.com/categories/`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -20,7 +20,7 @@ export const categories = async() =>{
          await refreshAccessToken();
         
 
-        response = await fetch(`https://animehub-2-i11e.onrender.com/categories/`, {
+        response = await fetch(` https://animehub-3-kbnb.onrender.com/categories/`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

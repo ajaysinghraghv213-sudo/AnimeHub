@@ -29,7 +29,7 @@ export const createPost = async (title: string, content: string, category: strin
 
         const { body, contentType } = buildBody();
 
-        let response = await fetch("https://animehub-2-i11e.onrender.com/create-post/", {
+        let response = await fetch(" https://animehub-3-kbnb.onrender.com/create-post/", {
             method: "POST",
             headers: {
                 ...(contentType ? { "Content-Type": contentType } : {}),
@@ -41,7 +41,7 @@ export const createPost = async (title: string, content: string, category: strin
         if(response.status===401){
             await refreshAccessToken();
             accessToken = localStorage.getItem("accessToken");
-            response = await fetch("https://animehub-2-i11e.onrender.com/create-post/", {
+            response = await fetch(" https://animehub-3-kbnb.onrender.com/create-post/", {
                 method: "POST",
                 headers: {
                     ...(contentType ? { "Content-Type": contentType } : {}),

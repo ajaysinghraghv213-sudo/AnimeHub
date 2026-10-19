@@ -39,7 +39,7 @@ ALLOWED_HOSTS = [
     host.strip()
     for host in os.environ.get(
         "ALLOWED_HOSTS",
-        "animehub-2-i11e.onrender.com"
+        "animehub-3-kbnb.onrender.com"
     ).split(",")
     if host.strip()
 ]

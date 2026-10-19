@@ -381,7 +381,7 @@ useEffect(() => {
         >
         {otherParticipant.profile_pic ? (
           <img
-            src={`https://animehub-2-i11e.onrender.com${otherParticipant.profile_pic}`}
+            src={` https://animehub-3-kbnb.onrender.com${otherParticipant.profile_pic}`}
             alt={`${otherParticipant.username} avatar`}
             className="size-10 shrink-0 rounded-full bg-violet-500/30 object-cover ring-2 ring-pink-400/70"
           />

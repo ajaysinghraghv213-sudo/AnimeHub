@@ -1,0 +1,85 @@
+services:
+  - type: web
+    name: articles-backend
+    runtime: python
+    rootDir: Backend
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate
+    startCommand: daphne -b 0.0.0.0 -p $PORT mains.mains.asgi:application
+    healthCheckPath: /admin/login/
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.9
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: articles-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: keyvalue
+          name: articles-redis
+          property: connectionString
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
+      - key: CSRF_TRUSTED_ORIGINS
+        sync: false
+      - key: EMAIL_HOST_USER
+        sync: false
+      - key: EMAIL_HOST_PASSWORD
+        sync: false
+
+  - type: worker
+    name: articles-celery
+    runtime: python
+    rootDir: Backend
+    region: oregon
+    plan: 0.5c-512mb
+    buildCommand: pip install -r requirements.txt
+    startCommand: celery -A mains.mains:celery_app worker --loglevel=info
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.9
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        fromService:
+          type: web
+          name: articles-backend
+          envVarKey: SECRET_KEY
+      - key: DATABASE_URL
+        fromDatabase:
+          name: articles-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: keyvalue
+          name: articles-redis
+          property: connectionString
+      - key: EMAIL_HOST_USER
+        fromService:
+          type: web
+          name: articles-backend
+          envVarKey: EMAIL_HOST_USER
+      - key: EMAIL_HOST_PASSWORD
+        fromService:
+          type: web
+          name: articles-backend
+          envVarKey: EMAIL_HOST_PASSWORD
+
+  - type: keyvalue
+    name: articles-redis
+    region: oregon
+    plan: free
+    ipAllowList: []
+
+databases:
+  - name: articles-db
+    databaseName: articles
+    user: articles
+    region: oregon
+    plan: free

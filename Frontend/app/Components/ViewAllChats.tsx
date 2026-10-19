@@ -21,7 +21,7 @@ type ChatRoom = {
     created_at: string;
 };
 
-const API = 'https://animehub-2-i11e.onrender.com';
+const API = ' https://animehub-3-kbnb.onrender.com';
 
 export default function ViewAllChats() {
     const [chats, setChats] = useState<ChatRoom[]>([]);

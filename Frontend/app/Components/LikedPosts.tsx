@@ -101,13 +101,13 @@ const LikedPosts = () => {
 
                                 {post.post.video ? (
                                     <video
-                                        src={`https://animehub-2-i11e.onrender.com${post.post.video}`}
+                                        src={` https://animehub-3-kbnb.onrender.com${post.post.video}`}
                                         controls
                                         className="h-full w-full object-cover"
                                     />
                                 ) : (
                                     <img
-                                        src={`https://animehub-2-i11e.onrender.com${post.post.image}`}
+                                        src={` https://animehub-3-kbnb.onrender.com${post.post.image}`}
                                         alt={post.post.title}
                                         className="h-full w-full object-cover transition-transform
                                                    duration-300 group-hover:scale-[1.02] group-hover:saturate-125"

@@ -11,7 +11,7 @@ export const LoginUser = async({username_or_email,password,setError }: loginprop
     console.log(username_or_email, password);
 
     try {
-        const response = await fetch(`https://animehub-2-i11e.onrender.com/login/`,{
+        const response = await fetch(` https://animehub-3-kbnb.onrender.com/login/`,{
 
 
         method: 'POST',

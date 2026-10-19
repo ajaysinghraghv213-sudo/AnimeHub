@@ -7,7 +7,7 @@ type RegisterProps = {'username': string,'password': string,'email': string,'con
 export const RegisterUser = async({username,email,password,confirm_password,setError}:RegisterProps) =>{
 
     try {
-        const response = await fetch(`https://animehub-2-i11e.onrender.com/registeration/`,{
+        const response = await fetch(` https://animehub-3-kbnb.onrender.com/registeration/`,{
 
         method : "POST",
 
@@ -45,7 +45,7 @@ export const VerifyOTP = async({email,otp}: {email:string,otp:string}) =>{
     try {
 
 
-        const response = await fetch(`https://animehub-2-i11e.onrender.com/verify-otp/`,{
+        const response = await fetch(` https://animehub-3-kbnb.onrender.com/verify-otp/`,{
             method : "POST",
             headers : {
                 "Content-Type":"application/json"

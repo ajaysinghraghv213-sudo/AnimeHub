@@ -131,7 +131,7 @@ const SelfPostCard = ({
 
             {/* Video */}
             {post.video && (
-                <AutoPlayVideo src={`https://animehub-2-i11e.onrender.com${post.video}`} />
+                <AutoPlayVideo src={` https://animehub-3-kbnb.onrender.com${post.video}`} />
             )}
             <button
                                     type="button"

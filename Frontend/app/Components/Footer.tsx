@@ -93,7 +93,7 @@ export default function Footer() {
         setStatus('loading');
         try {
             // TODO: replace with your real API call, e.g.
-            // await fetch('https://animehub-2-i11e.onrender.com/api/newsletter/', { method: 'POST', ... })
+            // await fetch(' https://animehub-3-kbnb.onrender.com/api/newsletter/', { method: 'POST', ... })
             await new Promise((r) => setTimeout(r, 800));
             setStatus('success');
             setEmail('');

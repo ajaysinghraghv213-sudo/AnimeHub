@@ -17,7 +17,7 @@ export const refreshAccessToken = async () => {
     try {
 
         const response = await fetch(
-            "https://animehub-2-i11e.onrender.com/token/refresh/",
+            " https://animehub-3-kbnb.onrender.com/token/refresh/",
             {
                 method: "POST",
                 headers: {

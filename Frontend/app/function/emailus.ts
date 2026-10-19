@@ -10,7 +10,7 @@ type EmailusData = {
 const Emailus = async ({ name, email, subject, message }: EmailusData) => {
     try {
         
-    const response = await fetch('https://animehub-2-i11e.onrender.com/email-us/', {
+    const response = await fetch(' https://animehub-3-kbnb.onrender.com/email-us/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

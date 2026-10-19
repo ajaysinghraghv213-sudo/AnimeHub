@@ -10,7 +10,7 @@ export const reply = async ({comment_id, content}: ReplyPayload) => {
     try {
         let access = localStorage.getItem('accessToken')
 
-    let response = await fetch(`https://animehub-2-i11e.onrender.com/reply/${comment_id}/`,{
+    let response = await fetch(` https://animehub-3-kbnb.onrender.com/reply/${comment_id}/`,{
 
         method : "POST",
 
@@ -22,7 +22,7 @@ export const reply = async ({comment_id, content}: ReplyPayload) => {
     })
     if (response.status === 401) {
         access = await refreshAccessToken()
-        response = await fetch(`https://animehub-2-i11e.onrender.com/reply/${comment_id}/`,{
+        response = await fetch(` https://animehub-3-kbnb.onrender.com/reply/${comment_id}/`,{
             method : "POST",
             headers  : {
                 "Content-Type" : "application/json",
