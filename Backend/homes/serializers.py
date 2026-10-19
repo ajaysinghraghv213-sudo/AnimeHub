@@ -1,5 +1,6 @@
 from os import read
-
+from urllib.parse import urljoin
+from django.conf import settings
 from rest_framework import serializers
 from .models import *
 from django.contrib.auth.hashers import make_password
@@ -36,10 +37,27 @@ class UserSerializer(serializers.ModelSerializer):
 
         
 class ProfileSerializer(serializers.ModelSerializer):
+    profile_pic = serializers.SerializerMethodField()
+
     class Meta:
         model = User
         fields = ['id', 'username', 'bio', 'profile_pic', 'is_online']
         read_only_fields = ['id', 'is_online']
+
+    def get_profile_pic(self, obj):
+        if not obj.profile_pic:
+            return None
+
+        try:
+            url = obj.profile_pic.url
+            if url.startswith("http://") or url.startswith("https://"):
+                return url
+            return urljoin(
+                "https://animehub-3-kbnb.onrender.com/",
+                url.lstrip("/")
+            )
+        except (ValueError, AttributeError):
+            return None
 
 class ParentCommentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -77,12 +95,41 @@ class LikeSerializer(serializers.ModelSerializer):
 class ArticleSerializer(serializers.ModelSerializer):
     likes = LikeSerializer(many=True, read_only=True)
     author = ProfileSerializer(read_only=True)
+    image = serializers.SerializerMethodField()
+    video = serializers.SerializerMethodField()
+
     class Meta:
         model = Post
-        fields = ['id', 'title', 'content', 'author', 'category','is_featured', 'image','video', 'created_at', 'likes']
-        read_only_fields = ['id', 'author', 'created_at', 'likes', 'is_featured']
+        fields = [
+            'id', 'title', 'content', 'author', 'category',
+            'is_featured', 'image', 'video', 'created_at', 'likes'
+        ]
+        read_only_fields = [
+            'id', 'author', 'created_at', 'likes', 'is_featured'
+        ]
 
-    def create(self,validated_data):
+    def get_image(self, obj):
+        return self._get_media_url(obj.image)
+
+    def get_video(self, obj):
+        return self._get_media_url(obj.video)
+
+    def _get_media_url(self, file_field):
+        if not file_field:
+            return None
+
+        try:
+            url = file_field.url
+            if url.startswith(("http://", "https://")):
+                return url
+            return urljoin(
+                "https://animehub-3-kbnb.onrender.com/",
+                url.lstrip("/")
+            )
+        except (ValueError, AttributeError):
+            return None
+
+    def create(self, validated_data):
         return Post.objects.create(**validated_data)
 
 
