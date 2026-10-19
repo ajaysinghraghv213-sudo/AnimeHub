@@ -5,6 +5,39 @@ from rest_framework import serializers
 from .models import *
 from django.contrib.auth.hashers import make_password
 import random
+from cloudinary.utils import cloudinary_url
+import os
+
+def get_cloudinary_media_url(file_field, resource_type="image"):
+    """
+    Generate a Cloudinary delivery URL from an existing media filename.
+
+    Examples:
+        profile_pics/yoga2.webp
+        -> yoga2
+
+        post_videos/example.mp4
+        -> example
+
+    Assumes Cloudinary public IDs match the original filenames.
+    """
+    if not file_field:
+        return None
+
+    filename = os.path.basename(file_field.name)
+    public_id = os.path.splitext(filename)[0]
+
+    url, _ = cloudinary_url(
+        public_id,
+        resource_type=resource_type,
+        secure=True,
+    )
+
+    return url
+
+
+
+
 
 class UserSerializer(serializers.ModelSerializer):
     confirm_password = serializers.CharField(write_only=True)
@@ -36,28 +69,30 @@ class UserSerializer(serializers.ModelSerializer):
 
 
         
+
 class ProfileSerializer(serializers.ModelSerializer):
     profile_pic = serializers.SerializerMethodField()
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'bio', 'profile_pic', 'is_online']
-        read_only_fields = ['id', 'is_online']
+        fields = [
+            "id",
+            "username",
+            "bio",
+            "profile_pic",
+            "is_online",
+        ]
+        read_only_fields = [
+            "id",
+            "is_online",
+        ]
 
     def get_profile_pic(self, obj):
-        if not obj.profile_pic:
-            return None
+        return get_cloudinary_media_url(
+            obj.profile_pic,
+            resource_type="image",
+        )
 
-        try:
-            url = obj.profile_pic.url
-            if url.startswith("http://") or url.startswith("https://"):
-                return url
-            return urljoin(
-                "https://animehub-3-kbnb.onrender.com/",
-                url.lstrip("/")
-            )
-        except (ValueError, AttributeError):
-            return None
 
 class ParentCommentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -95,42 +130,47 @@ class LikeSerializer(serializers.ModelSerializer):
 class ArticleSerializer(serializers.ModelSerializer):
     likes = LikeSerializer(many=True, read_only=True)
     author = ProfileSerializer(read_only=True)
+
     image = serializers.SerializerMethodField()
     video = serializers.SerializerMethodField()
 
     class Meta:
         model = Post
         fields = [
-            'id', 'title', 'content', 'author', 'category',
-            'is_featured', 'image', 'video', 'created_at', 'likes'
+            "id",
+            "title",
+            "content",
+            "author",
+            "category",
+            "is_featured",
+            "image",
+            "video",
+            "created_at",
+            "likes",
         ]
         read_only_fields = [
-            'id', 'author', 'created_at', 'likes', 'is_featured'
+            "id",
+            "author",
+            "created_at",
+            "likes",
+            "is_featured",
         ]
 
     def get_image(self, obj):
-        return self._get_media_url(obj.image)
+        return get_cloudinary_media_url(
+            obj.image,
+            resource_type="image",
+        )
 
     def get_video(self, obj):
-        return self._get_media_url(obj.video)
-
-    def _get_media_url(self, file_field):
-        if not file_field:
-            return None
-
-        try:
-            url = file_field.url
-            if url.startswith(("http://", "https://")):
-                return url
-            return urljoin(
-                "https://animehub-3-kbnb.onrender.com/",
-                url.lstrip("/")
-            )
-        except (ValueError, AttributeError):
-            return None
+        return get_cloudinary_media_url(
+            obj.video,
+            resource_type="video",
+        )
 
     def create(self, validated_data):
         return Post.objects.create(**validated_data)
+
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -156,12 +196,44 @@ class RecentPostSerializer(serializers.ModelSerializer):
 
 class FeaturedPostSerializer(serializers.ModelSerializer):
     author = ProfileSerializer(read_only=True)
+    image = serializers.SerializerMethodField()
+    video = serializers.SerializerMethodField()
+
     class Meta:
         model = Post
-        fields = ['id', 'title', 'content', 'author', 'category','is_featured', 'image','video', 'created_at', 'likes']
-        read_only_fields = ['id', 'author', 'created_at', 'likes', 'is_featured']
+        fields = [
+            "id",
+            "title",
+            "content",
+            "author",
+            "category",
+            "is_featured",
+            "image",
+            "video",
+            "created_at",
+            "likes",
+        ]
+        read_only_fields = [
+            "id",
+            "author",
+            "created_at",
+            "likes",
+            "is_featured",
+        ]
 
+    def get_image(self, obj):
+        return get_cloudinary_media_url(
+            obj.image,
+            resource_type="image",
+        )
 
+    def get_video(self, obj):
+        return get_cloudinary_media_url(
+            obj.video,
+            resource_type="video",
+        )
+
+    
 class LikedPostSerializer(serializers.ModelSerializer):
     user = ProfileSerializer(read_only=True)
     post = ArticleSerializer(read_only=True)
