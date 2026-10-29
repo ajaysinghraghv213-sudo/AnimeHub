@@ -1,34 +1,32 @@
-#!/bin/sh
+
+#!/bin/bash
 
 set -e
 
-celery -A mains.mains worker --loglevel=info &
+echo "Starting Celery worker..."
+celery -A mains.mains worker --loglevel=info --concurrency=1 &
 CELERY_PID=$!
 
-daphne -b 0.0.0.0 -p "${PORT:-8000}" mains.mains.asgi:application &
+echo "Starting Daphne server..."
+daphne -b 0.0.0.0 -p "${PORT:-10000}" mains.mains.asgi:application &
 DAPHNE_PID=$!
 
 cleanup() {
-    kill "$CELERY_PID" "$DAPHNE_PID" 2>/dev/null || true
+    echo "Stopping Celery and Daphne..."
+    kill -TERM "$CELERY_PID" "$DAPHNE_PID" 2>/dev/null || true
+    wait "$CELERY_PID" 2>/dev/null || true
+    wait "$DAPHNE_PID" 2>/dev/null || true
 }
 
 trap cleanup TERM INT
 
-# Stop the container if either process exits.
-while true; do
-    if ! kill -0 "$CELERY_PID" 2>/dev/null; then
-        echo "Celery worker stopped unexpectedly."
-        cleanup
-        wait
-        exit 1
-    fi
+# Exit if either process stops
+set +e
+wait -n "$CELERY_PID" "$DAPHNE_PID"
+STATUS=$?
+set -e
 
-    if ! kill -0 "$DAPHNE_PID" 2>/dev/null; then
-        echo "Daphne stopped unexpectedly."
-        cleanup
-        wait
-        exit 1
-    fi
+echo "Celery or Daphne exited with status $STATUS"
 
-    sleep 5
-done
+cleanup
+exit 1

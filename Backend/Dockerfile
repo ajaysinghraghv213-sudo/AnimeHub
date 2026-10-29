@@ -8,6 +8,7 @@ WORKDIR /app
 
 # Install system dependencies required by mysqlclient
 RUN apt-get update && apt-get install -y \
+    bash \
     build-essential \
     pkg-config \
     default-libmysqlclient-dev \
@@ -29,4 +30,4 @@ RUN chmod +x /app/start.sh
 EXPOSE 8000
 
 # Start Celery and Daphne
-CMD ["/bin/sh", "/app/start.sh"]
+CMD ["/bin/bash", "/app/start.sh"]
