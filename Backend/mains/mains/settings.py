@@ -128,11 +128,11 @@ ASGI_APPLICATION = "mains.mains.asgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": os.environ.get("DB_NAME"),
-        "USER": os.environ.get("DB_USER"),
-        "PASSWORD": os.environ.get("DB_PASSWORD"),
-        "HOST": os.environ.get("DB_HOST"),
-        "PORT": os.environ.get("DB_PORT"),
+        "NAME": os.environ.get("DB_NAME",'article'),
+        "USER": os.environ.get("DB_USER",'root'),
+        "PASSWORD": os.environ.get("DB_PASSWORD",'password'),
+        "HOST": os.environ.get("DB_HOST",'127.0.0.1'),
+        "PORT": os.environ.get("DB_PORT",'3306'),
         "OPTIONS": {"charset": "utf8mb4"},
         "CONN_MAX_AGE": 600,
     }
