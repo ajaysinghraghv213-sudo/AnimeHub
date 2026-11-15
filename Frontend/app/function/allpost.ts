@@ -4,7 +4,7 @@
 
 export const getAllPosts = async () => {
     try {
-        const response = await fetch(" https://animehub-3-kbnb.onrender.com/all-posts/",{
+        const response = await fetch(" https://https://overnight-fraction-mit-clip.trycloudflare.com  /all-posts/",{
 
 
             method : "GET",

@@ -123,7 +123,7 @@ const PostbyCategory = () => {
                                         src={
                                             post.image.startsWith("http")
                                                 ? post.image
-                                                : `https://animehub-3-kbnb.onrender.com${post.image.startsWith("/") ? "" : "/"}${post.image}`
+                                                : `https://https://overnight-fraction-mit-clip.trycloudflare.com  ${post.image.startsWith("/") ? "" : "/"}${post.image}`
                                         }
                                         alt={post.title}
                                             className="mt-5 max-h-[35rem] w-full rounded-xl border-2 border-violet-500/50 bg-slate-950 object-contain"
@@ -136,7 +136,7 @@ const PostbyCategory = () => {
                                         src={
                                             post.video.startsWith("http")
                                                 ? post.video
-                                                : `https://animehub-3-kbnb.onrender.com${post.video.startsWith("/") ? "" : "/"}${post.video}`
+                                                : `https://https://overnight-fraction-mit-clip.trycloudflare.com  ${post.video.startsWith("/") ? "" : "/"}${post.video}`
                                         }
                                     />
                                 )}
