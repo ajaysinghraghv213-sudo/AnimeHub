@@ -9,7 +9,7 @@ export const profileView = async() => {
     try {
         let access = localStorage.getItem("accessToken");
 
-    let response = await fetch(` https://https://overnight-fraction-mit-clip.trycloudflare.com  /profile/`, {
+    let response = await fetch(` https://overnight-fraction-mit-clip.trycloudflare.com  /profile/`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -21,7 +21,7 @@ export const profileView = async() => {
          await refreshAccessToken();
         access = localStorage.getItem("accessToken");
 
-        response = await fetch(` https://https://overnight-fraction-mit-clip.trycloudflare.com  /profile/`, {
+        response = await fetch(` https://overnight-fraction-mit-clip.trycloudflare.com  /profile/`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -50,7 +50,7 @@ export const otherProfileView = async(userId: string) => {
     try {
         let access = localStorage.getItem("accessToken");
 
-    let response = await fetch(` https://https://overnight-fraction-mit-clip.trycloudflare.com  /userprofile/${userId}/`, {
+    let response = await fetch(` https://overnight-fraction-mit-clip.trycloudflare.com  /userprofile/${userId}/`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -62,7 +62,7 @@ export const otherProfileView = async(userId: string) => {
          await refreshAccessToken();
         access = localStorage.getItem("accessToken");
 
-        response = await fetch(` https://https://overnight-fraction-mit-clip.trycloudflare.com  /userprofile/${userId}/`, {
+        response = await fetch(` https://overnight-fraction-mit-clip.trycloudflare.com  /userprofile/${userId}/`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -104,7 +104,7 @@ export const updateProfile = async(profileData: any) => {
           }
         }
 
-    let response = await fetch(` https://https://overnight-fraction-mit-clip.trycloudflare.com  /profile/update/`, {
+    let response = await fetch(` https://overnight-fraction-mit-clip.trycloudflare.com  /profile/update/`, {
         method: "PATCH",
         headers: {
             "Authorization": `Bearer ${access}`
@@ -116,7 +116,7 @@ export const updateProfile = async(profileData: any) => {
          await refreshAccessToken();
         access = localStorage.getItem("accessToken");
 
-        response = await fetch(` https://https://overnight-fraction-mit-clip.trycloudflare.com  /profile/update/`, {
+        response = await fetch(` https://overnight-fraction-mit-clip.trycloudflare.com  /profile/update/`, {
             method: "PATCH",
             headers: {
                 "Authorization": `Bearer ${access}`

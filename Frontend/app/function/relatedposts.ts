@@ -5,7 +5,7 @@ export const relatedPosts = async (postId: number) => {
   // Logic to fetch or filter related posts based on the given postId
 
  try {
-     const response = await fetch(` https://https://overnight-fraction-mit-clip.trycloudflare.com  /related-posts/${postId}`,{
+     const response = await fetch(` https://overnight-fraction-mit-clip.trycloudflare.com  /related-posts/${postId}`,{
 
 
     method: 'GET'

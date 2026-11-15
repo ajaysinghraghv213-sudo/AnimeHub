@@ -7,7 +7,7 @@ export const categories = async() =>{
    try {
      
 
-    let response = await fetch(` https://https://overnight-fraction-mit-clip.trycloudflare.com  /categories/`, {
+    let response = await fetch(` https://overnight-fraction-mit-clip.trycloudflare.com  /categories/`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -20,7 +20,7 @@ export const categories = async() =>{
          await refreshAccessToken();
         
 
-        response = await fetch(` https://https://overnight-fraction-mit-clip.trycloudflare.com  /categories/`, {
+        response = await fetch(` https://overnight-fraction-mit-clip.trycloudflare.com  /categories/`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

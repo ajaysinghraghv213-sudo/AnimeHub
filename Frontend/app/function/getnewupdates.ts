@@ -6,7 +6,7 @@ type GetNewUpdatesData = {
 
 const GetNewUpdates = async ({ email }: GetNewUpdatesData) => {
     try {
-        const response = await fetch(' https://https://overnight-fraction-mit-clip.trycloudflare.com  /get-new-updates/', {
+        const response = await fetch(' https://overnight-fraction-mit-clip.trycloudflare.com  /get-new-updates/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

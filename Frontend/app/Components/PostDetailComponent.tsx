@@ -137,7 +137,7 @@ const PostDetailComponent = () => {
         src={
             post.image.startsWith("http")
                 ? post.image
-                : `https://https://overnight-fraction-mit-clip.trycloudflare.com  ${post.image.startsWith("/") ? "" : "/"}${post.image}`
+                : `https://overnight-fraction-mit-clip.trycloudflare.com  ${post.image.startsWith("/") ? "" : "/"}${post.image}`
         }
         alt={post.title}
         className="mt-5 max-h-140 w-full rounded-xl border-2 border-violet-500/50 bg-slate-950 object-contain"
@@ -148,7 +148,7 @@ const PostDetailComponent = () => {
         src={
             post.video.startsWith("http")
                 ? post.video
-                : `https://https://overnight-fraction-mit-clip.trycloudflare.com  ${post.video.startsWith("/") ? "" : "/"}${post.video}`
+                : `https://overnight-fraction-mit-clip.trycloudflare.com  ${post.video.startsWith("/") ? "" : "/"}${post.video}`
         }
         controls
         className="mt-5 max-h-140 w-full rounded-xl bg-slate-950 object-contain"

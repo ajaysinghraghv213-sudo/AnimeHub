@@ -5,7 +5,7 @@
 export const recentPosts = async () =>{
 
     try {
-        const response = await fetch(' https://https://overnight-fraction-mit-clip.trycloudflare.com  /recent-posts/',{
+        const response = await fetch(' https://overnight-fraction-mit-clip.trycloudflare.com  /recent-posts/',{
 
         method : "GET",
 

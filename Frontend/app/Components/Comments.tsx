@@ -175,7 +175,7 @@ const Comments = ({
                         src={
                           author.profile_pic.startsWith("http")
                             ? author.profile_pic
-                            : `https://https://overnight-fraction-mit-clip.trycloudflare.com  ${author.profile_pic.startsWith("/") ? "" : "/"}${author.profile_pic}`
+                            : `https://overnight-fraction-mit-clip.trycloudflare.com  ${author.profile_pic.startsWith("/") ? "" : "/"}${author.profile_pic}`
                         }
                         alt={authorName}
                         className="size-full object-cover"
@@ -323,7 +323,7 @@ const Comments = ({
                     src={
                       replyAuthor.profile_pic.startsWith("http")
                         ? replyAuthor.profile_pic
-                        : `https://https://overnight-fraction-mit-clip.trycloudflare.com  ${replyAuthor.profile_pic.startsWith("/") ? "" : "/"}${replyAuthor.profile_pic}`
+                        : `https://overnight-fraction-mit-clip.trycloudflare.com  ${replyAuthor.profile_pic.startsWith("/") ? "" : "/"}${replyAuthor.profile_pic}`
                     }
                     alt={name}
                     loading="lazy"
