@@ -104,7 +104,7 @@ const LikedPosts = () => {
                                         src={
                                             post.post.video.startsWith("http")
                                                 ? post.post.video
-                                                : `https://overnight-fraction-mit-clip.trycloudflare.com ${post.post.video.startsWith("/") ? "" : "/"}${post.post.video}`
+                                                : `https://overnight-fraction-mit-clip.trycloudflare.com${post.post.video.startsWith("/") ? "" : "/"}${post.post.video}`
                                         }
                                         controls
                                         className="h-full w-full object-cover"
@@ -114,7 +114,7 @@ const LikedPosts = () => {
                                         src={
                                             post.post.image.startsWith("http")
                                                 ? post.post.image
-                                                : `https://overnight-fraction-mit-clip.trycloudflare.com ${post.post.image.startsWith("/") ? "" : "/"}${post.post.image}`
+                                                : `https://overnight-fraction-mit-clip.trycloudflare.com${post.post.image.startsWith("/") ? "" : "/"}${post.post.image}`
                                         }
                                         alt={post.post.title}
                                         className="h-full w-full object-cover transition-transform
