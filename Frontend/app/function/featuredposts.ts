@@ -3,7 +3,7 @@
 
 export const getFeaturedPosts = async () => {
 
-    try {const response = await fetch(` https://overnight-fraction-mit-clip.trycloudflare.com  /featured-posts/`,{
+    try {const response = await fetch(` https://overnight-fraction-mit-clip.trycloudflare.com /featured-posts/`,{
 
 
         method : 'GET',

@@ -6,7 +6,7 @@ export const userPost = async() =>{
    try {
      let access = localStorage.getItem('accessToken');
 
-    let response = await fetch(` https://overnight-fraction-mit-clip.trycloudflare.com  /self-posts/`,{
+    let response = await fetch(` https://overnight-fraction-mit-clip.trycloudflare.com /self-posts/`,{
 
 
         method : "GET",
@@ -18,7 +18,7 @@ export const userPost = async() =>{
     if(response.status === 401){
         await refreshAccessToken();
         access = localStorage.getItem('accessToken');
-        response = await fetch(` https://overnight-fraction-mit-clip.trycloudflare.com  /self-posts/`,{
+        response = await fetch(` https://overnight-fraction-mit-clip.trycloudflare.com /self-posts/`,{
             method : "GET",
             headers: {
                 "Authorization": `Bearer ${access}`

@@ -142,7 +142,7 @@ const scrollByCard = (dir: 1 | -1) => {
                            src={
                                post.video.startsWith("http")
                                    ? post.video
-                                   : `https://overnight-fraction-mit-clip.trycloudflare.com  ${post.video.startsWith("/") ? "" : "/"}${post.video}`
+                                   : `https://overnight-fraction-mit-clip.trycloudflare.com ${post.video.startsWith("/") ? "" : "/"}${post.video}`
                            }
                            fill
                        />
@@ -151,7 +151,7 @@ const scrollByCard = (dir: 1 | -1) => {
                             src={
                                 post.image.startsWith("http")
                                     ? post.image
-                                    : `https://overnight-fraction-mit-clip.trycloudflare.com  ${post.image.startsWith("/") ? "" : "/"}${post.image}`
+                                    : `https://overnight-fraction-mit-clip.trycloudflare.com ${post.image.startsWith("/") ? "" : "/"}${post.image}`
                             }
                             alt={post.title}
                             className="h-full w-full object-cover transition duration-500 group-hover:scale-105 group-hover:saturate-125"
@@ -192,7 +192,7 @@ const scrollByCard = (dir: 1 | -1) => {
                                 src={post.author?.profile_pic
                                     ? (post.author.profile_pic.startsWith("http")
                                         ? post.author.profile_pic
-                                        : `https://overnight-fraction-mit-clip.trycloudflare.com  ${post.author.profile_pic.startsWith("/") ? "" : "/"}${post.author.profile_pic}`)
+                                        : `https://overnight-fraction-mit-clip.trycloudflare.com ${post.author.profile_pic.startsWith("/") ? "" : "/"}${post.author.profile_pic}`)
                                     : '/file.svg'}
                                 alt={post.author?.username || "Anonymous"}
                                 className="h-9 w-9 shrink-0 rounded-full bg-slate-900 object-cover ring-2 ring-pink-400 ring-offset-2 ring-offset-[#12143a] transition hover:ring-cyan-300"

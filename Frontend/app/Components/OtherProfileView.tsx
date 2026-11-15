@@ -157,7 +157,7 @@ const OtherProfileView = ({ userId }: { userId: string }) => {
                                     src={profile?.profile_pic
                                         ? (profile.profile_pic.startsWith("http")
                                             ? profile.profile_pic
-                                            : `https://overnight-fraction-mit-clip.trycloudflare.com  ${profile.profile_pic.startsWith("/") ? "" : "/"}${profile.profile_pic}`)
+                                            : `https://overnight-fraction-mit-clip.trycloudflare.com ${profile.profile_pic.startsWith("/") ? "" : "/"}${profile.profile_pic}`)
                                         : '/file.svg'}
                                     alt="User avatar"
                                     className="h-28 w-28 rounded-3xl border-4 border-white bg-slate-900 object-cover shadow-[5px_5px_0_#ec4899] sm:h-32 sm:w-32"
@@ -242,7 +242,7 @@ const OtherProfileView = ({ userId }: { userId: string }) => {
                                             src={follower.profile_pic
                                                 ? (follower.profile_pic.startsWith("http")
                                                     ? follower.profile_pic
-                                                    : `https://overnight-fraction-mit-clip.trycloudflare.com  ${follower.profile_pic.startsWith("/") ? "" : "/"}${follower.profile_pic}`)
+                                                    : `https://overnight-fraction-mit-clip.trycloudflare.com ${follower.profile_pic.startsWith("/") ? "" : "/"}${follower.profile_pic}`)
                                                 : '/file.svg'}
                                             alt={`${follower.username || 'Member'} avatar`}
                                             className="h-10 w-10 rounded-full bg-slate-900 object-cover ring-2 ring-pink-400 ring-offset-2 ring-offset-[#12143a] transition hover:ring-cyan-300"
@@ -277,7 +277,7 @@ const OtherProfileView = ({ userId }: { userId: string }) => {
                                             src={followedUser.profile_pic
                                                 ? (followedUser.profile_pic.startsWith("http")
                                                     ? followedUser.profile_pic
-                                                    : `https://overnight-fraction-mit-clip.trycloudflare.com  ${followedUser.profile_pic.startsWith("/") ? "" : "/"}${followedUser.profile_pic}`)
+                                                    : `https://overnight-fraction-mit-clip.trycloudflare.com ${followedUser.profile_pic.startsWith("/") ? "" : "/"}${followedUser.profile_pic}`)
                                                 : '/file.svg'}
                                             alt={`${followedUser.username || 'Member'} avatar`}
                                             className="h-10 w-10 rounded-full bg-slate-900 object-cover ring-2 ring-pink-400 ring-offset-2 ring-offset-[#12143a] transition hover:ring-cyan-300"

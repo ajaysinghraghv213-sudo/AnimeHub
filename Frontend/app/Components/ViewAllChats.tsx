@@ -140,7 +140,7 @@ export default function ViewAllChats() {
                                             src={
                                                 other.profile_pic.startsWith("http")
                                                     ? other.profile_pic
-                                                    : `https://overnight-fraction-mit-clip.trycloudflare.com  ${other.profile_pic.startsWith("/") ? "" : "/"}${other.profile_pic}`
+                                                    : `https://overnight-fraction-mit-clip.trycloudflare.com ${other.profile_pic.startsWith("/") ? "" : "/"}${other.profile_pic}`
                                             }
                                             alt={`${other.username} avatar`}
                                             className="size-12 shrink-0 rounded-full bg-violet-500/30 object-cover ring-2 ring-pink-400/70"
