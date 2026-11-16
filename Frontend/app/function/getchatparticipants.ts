@@ -5,7 +5,7 @@ export const getChatParticipants = async (roomId: string) => {
     try {
         let access = localStorage.getItem('accessToken');
 
-        let response = await fetch(` https://overnight-fraction-mit-clip.trycloudflare.com/chats/${roomId}/participants/`, {
+        let response = await fetch(` https://hired-smtp-float-ontario.trycloudflare.com/chats/${roomId}/participants/`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${access}`
@@ -13,7 +13,7 @@ export const getChatParticipants = async (roomId: string) => {
         });
         if (response.status === 401) {
             access = await refreshAccessToken();
-            response = await fetch(` https://overnight-fraction-mit-clip.trycloudflare.com/chats/${roomId}/participants/`, {
+            response = await fetch(` https://hired-smtp-float-ontario.trycloudflare.com/chats/${roomId}/participants/`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${access}`

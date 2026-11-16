@@ -384,7 +384,7 @@ useEffect(() => {
             src={
               otherParticipant.profile_pic.startsWith("http")
                 ? otherParticipant.profile_pic
-                : `https://overnight-fraction-mit-clip.trycloudflare.com${otherParticipant.profile_pic.startsWith("/") ? "" : "/"}${otherParticipant.profile_pic}`
+                : `https://hired-smtp-float-ontario.trycloudflare.com${otherParticipant.profile_pic.startsWith("/") ? "" : "/"}${otherParticipant.profile_pic}`
             }
             alt={`${otherParticipant.username} avatar`}
             className="size-10 shrink-0 rounded-full bg-violet-500/30 object-cover ring-2 ring-pink-400/70"

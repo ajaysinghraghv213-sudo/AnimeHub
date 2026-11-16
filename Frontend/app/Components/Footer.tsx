@@ -93,7 +93,7 @@ export default function Footer() {
         setStatus('loading');
         try {
             // TODO: replace with your real API call, e.g.
-            // await fetch(' https://overnight-fraction-mit-clip.trycloudflare.com/api/newsletter/', { method: 'POST', ... })
+            // await fetch(' https://hired-smtp-float-ontario.trycloudflare.com/api/newsletter/', { method: 'POST', ... })
             await new Promise((r) => setTimeout(r, 800));
             setStatus('success');
             setEmail('');

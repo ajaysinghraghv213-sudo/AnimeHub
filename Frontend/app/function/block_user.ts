@@ -1,6 +1,6 @@
 ﻿import {refreshAccessToken} from '@/app/function/refreshAccessToken'
 
-const BLOCK_URL = ' https://overnight-fraction-mit-clip.trycloudflare.com/blocked-users/'
+const BLOCK_URL = ' https://hired-smtp-float-ontario.trycloudflare.com/blocked-users/'
 
 // The blocked user's id is sent in the body; GET requests must not have one.
 const authFetch = async (method: string, userId?: string | number) => {

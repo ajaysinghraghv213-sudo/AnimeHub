@@ -10,7 +10,7 @@ type EmailusData = {
 const Emailus = async ({ name, email, subject, message }: EmailusData) => {
     try {
         
-    const response = await fetch(' https://overnight-fraction-mit-clip.trycloudflare.com/email-us/', {
+    const response = await fetch(' https://hired-smtp-float-ontario.trycloudflare.com/email-us/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
