@@ -5,7 +5,7 @@ import { refreshAccessToken } from "@/app/function/refreshAccessToken";
 export const unfollowUser = async(userId: string) => {
     try {
         let access = localStorage.getItem("accessToken");
-        let response = await fetch(` https://reflect-tex-broader-lucas.trycloudflare.com/unfollow/${userId}/`, {
+        let response = await fetch(` https://matters-jerusalem-capture-fitted.trycloudflare.com/unfollow/${userId}/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -18,7 +18,7 @@ export const unfollowUser = async(userId: string) => {
             await refreshAccessToken();
             access = localStorage.getItem("accessToken");
 
-            response = await fetch(` https://reflect-tex-broader-lucas.trycloudflare.com/unfollow/${userId}/`, {
+            response = await fetch(` https://matters-jerusalem-capture-fitted.trycloudflare.com/unfollow/${userId}/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

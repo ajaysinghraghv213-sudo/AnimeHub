@@ -17,7 +17,7 @@ export const refreshAccessToken = async () => {
     try {
 
         const response = await fetch(
-            " https://reflect-tex-broader-lucas.trycloudflare.com/token/refresh/",
+            " https://matters-jerusalem-capture-fitted.trycloudflare.com/token/refresh/",
             {
                 method: "POST",
                 headers: {

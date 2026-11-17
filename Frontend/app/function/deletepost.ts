@@ -6,7 +6,7 @@ export const deletePost = async (postId: number | string) => {
    try{
      let access = localStorage.getItem('AccessToken');
 
-    let response = await fetch(` https://reflect-tex-broader-lucas.trycloudflare.com/delete-post/${postId}/`, {
+    let response = await fetch(` https://matters-jerusalem-capture-fitted.trycloudflare.com/delete-post/${postId}/`, {
         method: 'DELETE',
         headers: {
             'Authorization': `Bearer ${access}`,
@@ -16,7 +16,7 @@ export const deletePost = async (postId: number | string) => {
 
     if (response.status === 401) {
         access = await refreshAccessToken();
-        response = await fetch(` https://reflect-tex-broader-lucas.trycloudflare.com/delete-post/${postId}/`, {
+        response = await fetch(` https://matters-jerusalem-capture-fitted.trycloudflare.com/delete-post/${postId}/`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${access}`,
