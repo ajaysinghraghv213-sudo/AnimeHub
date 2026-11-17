@@ -8,7 +8,7 @@ const logout = async (): Promise<Response | null> => {
     const access = localStorage.getItem("accessToken");
     const refresh = localStorage.getItem("refreshToken");
 
-    const response = await fetch(" https://hired-smtp-float-ontario.trycloudflare.com/logout/", {
+    const response = await fetch(" https://reflect-tex-broader-lucas.trycloudflare.com/logout/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

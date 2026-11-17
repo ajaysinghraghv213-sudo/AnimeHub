@@ -17,7 +17,7 @@ export const refreshAccessToken = async () => {
     try {
 
         const response = await fetch(
-            " https://hired-smtp-float-ontario.trycloudflare.com/token/refresh/",
+            " https://reflect-tex-broader-lucas.trycloudflare.com/token/refresh/",
             {
                 method: "POST",
                 headers: {

@@ -95,7 +95,7 @@ const AllPostsComponent = () => {
                         src={
                           post.author.profile_pic.startsWith("http")
                             ? post.author.profile_pic
-                            : `https://hired-smtp-float-ontario.trycloudflare.com${post.author.profile_pic.startsWith("/") ? "" : "/"}${post.author.profile_pic}`
+                            : `https://reflect-tex-broader-lucas.trycloudflare.com${post.author.profile_pic.startsWith("/") ? "" : "/"}${post.author.profile_pic}`
                         }
                         alt=""
                         loading="lazy"
@@ -167,7 +167,7 @@ const AllPostsComponent = () => {
                     src={
                       post.image.startsWith("http")
                         ? post.image
-                        : `https://hired-smtp-float-ontario.trycloudflare.com${post.image.startsWith("/") ? "" : "/"}${post.image}`
+                        : `https://reflect-tex-broader-lucas.trycloudflare.com${post.image.startsWith("/") ? "" : "/"}${post.image}`
                     }
                     alt={post.title}
                     loading="lazy"
@@ -181,7 +181,7 @@ const AllPostsComponent = () => {
                     src={
                       post.video.startsWith("http")
                         ? post.video
-                        : `https://hired-smtp-float-ontario.trycloudflare.com${post.video.startsWith("/") ? "" : "/"}${post.video}`
+                        : `https://reflect-tex-broader-lucas.trycloudflare.com${post.video.startsWith("/") ? "" : "/"}${post.video}`
                     }
                   />
                 )}

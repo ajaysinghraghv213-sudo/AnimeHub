@@ -5,7 +5,7 @@
 export const homeCategories = async () =>{
 
     try{
-        const response = await fetch(` https://hired-smtp-float-ontario.trycloudflare.com/home-categories/`,{
+        const response = await fetch(` https://reflect-tex-broader-lucas.trycloudflare.com/home-categories/`,{
 
 
         method : "GET",

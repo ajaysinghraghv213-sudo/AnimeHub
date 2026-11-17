@@ -3,7 +3,7 @@
 
 export const getFeaturedPosts = async () => {
 
-    try {const response = await fetch(` https://hired-smtp-float-ontario.trycloudflare.com/featured-posts/`,{
+    try {const response = await fetch(` https://reflect-tex-broader-lucas.trycloudflare.com/featured-posts/`,{
 
 
         method : 'GET',

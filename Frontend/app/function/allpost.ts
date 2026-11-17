@@ -4,7 +4,7 @@
 
 export const getAllPosts = async () => {
     try {
-        const response = await fetch(" https://hired-smtp-float-ontario.trycloudflare.com/all-posts/",{
+        const response = await fetch(" https://reflect-tex-broader-lucas.trycloudflare.com/all-posts/",{
 
 
             method : "GET",

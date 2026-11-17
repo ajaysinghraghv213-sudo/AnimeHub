@@ -2,7 +2,7 @@ import { refreshAccessToken } from '@/app/function/refreshAccessToken';
 
 export const createChat = async (participantId: number | string) => {
     const send = (access: string | null) =>
-        fetch(` https://hired-smtp-float-ontario.trycloudflare.com/chats/start/${participantId}/`, {
+        fetch(` https://reflect-tex-broader-lucas.trycloudflare.com/chats/start/${participantId}/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
