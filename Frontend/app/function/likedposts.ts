@@ -7,7 +7,7 @@ export const likedPosts = async () => {
     try {
         let access = localStorage.getItem("accessToken");
 
-        let response = await fetch(` https://matters-jerusalem-capture-fitted.trycloudflare.com/liked-posts/`,{
+        let response = await fetch(` https://surrounded-ruby-worm-languages.trycloudflare.com/liked-posts/`,{
 
             method : "GET",
 
@@ -19,7 +19,7 @@ export const likedPosts = async () => {
         if (response.status===401){
             await refreshAccessToken();
             access = localStorage.getItem("accessToken");
-            response = await fetch(` https://matters-jerusalem-capture-fitted.trycloudflare.com/liked-posts/`,{
+            response = await fetch(` https://surrounded-ruby-worm-languages.trycloudflare.com/liked-posts/`,{
 
                 method : "GET",
 

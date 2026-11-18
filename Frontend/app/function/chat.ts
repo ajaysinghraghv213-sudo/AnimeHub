@@ -11,7 +11,7 @@ export type ChatSocketHandlers = {
 };
 
 const getChatSocketUrl = (roomId: string) => {
-  const baseUrl = process.env.NEXT_PUBLIC_WS_URL ?? " https://matters-jerusalem-capture-fitted.trycloudflare.com";
+  const baseUrl = process.env.NEXT_PUBLIC_WS_URL ?? " https://surrounded-ruby-worm-languages.trycloudflare.com";
   const access = localStorage.getItem("accessToken") ?? "";
   const url = new URL(`/ws/chat/${roomId}/?token=${access}`, baseUrl);
 

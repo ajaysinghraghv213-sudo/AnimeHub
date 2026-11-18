@@ -67,7 +67,7 @@ const RelatedPost = ({ postId }: RelatedPostProps) => {
                                         src={
                                             post.image.startsWith("http")
                                                 ? post.image
-                                                : `https://matters-jerusalem-capture-fitted.trycloudflare.com${post.image.startsWith("/") ? "" : "/"}${post.image}`
+                                                : `https://surrounded-ruby-worm-languages.trycloudflare.com${post.image.startsWith("/") ? "" : "/"}${post.image}`
                                         }
                                         alt=""
                                         loading="lazy"
@@ -80,7 +80,7 @@ const RelatedPost = ({ postId }: RelatedPostProps) => {
                                                 src={
                                                     post.video.startsWith("http")
                                                         ? post.video
-                                                        : `https://matters-jerusalem-capture-fitted.trycloudflare.com${post.video.startsWith("/") ? "" : "/"}${post.video}`
+                                                        : `https://surrounded-ruby-worm-languages.trycloudflare.com${post.video.startsWith("/") ? "" : "/"}${post.video}`
                                                 }
                                                 fill
                                             />
@@ -107,7 +107,7 @@ const RelatedPost = ({ postId }: RelatedPostProps) => {
                                         src={post.author?.profile_pic
                                             ? (post.author.profile_pic.startsWith("http")
                                                 ? post.author.profile_pic
-                                                : `https://matters-jerusalem-capture-fitted.trycloudflare.com${post.author.profile_pic.startsWith("/") ? "" : "/"}${post.author.profile_pic}`)
+                                                : `https://surrounded-ruby-worm-languages.trycloudflare.com${post.author.profile_pic.startsWith("/") ? "" : "/"}${post.author.profile_pic}`)
                                             : '/file.svg'}
                                         alt=""
                                         className="size-6 shrink-0 rounded-full bg-slate-900 object-cover ring-2 ring-pink-400"

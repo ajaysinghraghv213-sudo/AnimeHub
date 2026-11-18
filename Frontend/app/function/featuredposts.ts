@@ -3,7 +3,7 @@
 
 export const getFeaturedPosts = async () => {
 
-    try {const response = await fetch(` https://matters-jerusalem-capture-fitted.trycloudflare.com/featured-posts/`,{
+    try {const response = await fetch(` https://surrounded-ruby-worm-languages.trycloudflare.com/featured-posts/`,{
 
 
         method : 'GET',

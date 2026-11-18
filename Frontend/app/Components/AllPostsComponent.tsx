@@ -95,7 +95,7 @@ const AllPostsComponent = () => {
                         src={
                           post.author.profile_pic.startsWith("http")
                             ? post.author.profile_pic
-                            : `https://matters-jerusalem-capture-fitted.trycloudflare.com${post.author.profile_pic.startsWith("/") ? "" : "/"}${post.author.profile_pic}`
+                            : `https://surrounded-ruby-worm-languages.trycloudflare.com${post.author.profile_pic.startsWith("/") ? "" : "/"}${post.author.profile_pic}`
                         }
                         alt=""
                         loading="lazy"
@@ -167,7 +167,7 @@ const AllPostsComponent = () => {
                     src={
                       post.image.startsWith("http")
                         ? post.image
-                        : `https://matters-jerusalem-capture-fitted.trycloudflare.com${post.image.startsWith("/") ? "" : "/"}${post.image}`
+                        : `https://surrounded-ruby-worm-languages.trycloudflare.com${post.image.startsWith("/") ? "" : "/"}${post.image}`
                     }
                     alt={post.title}
                     loading="lazy"
@@ -181,7 +181,7 @@ const AllPostsComponent = () => {
                     src={
                       post.video.startsWith("http")
                         ? post.video
-                        : `https://matters-jerusalem-capture-fitted.trycloudflare.com${post.video.startsWith("/") ? "" : "/"}${post.video}`
+                        : `https://surrounded-ruby-worm-languages.trycloudflare.com${post.video.startsWith("/") ? "" : "/"}${post.video}`
                     }
                   />
                 )}

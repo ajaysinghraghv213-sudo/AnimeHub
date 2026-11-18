@@ -8,7 +8,7 @@ import { refreshAccessToken } from "./refreshAccessToken";
 
 
 
-    let response = await fetch(` https://matters-jerusalem-capture-fitted.trycloudflare.com/likes/${postId}/`, {
+    let response = await fetch(` https://surrounded-ruby-worm-languages.trycloudflare.com/likes/${postId}/`, {
 
 
         method: "POST",
@@ -22,7 +22,7 @@ import { refreshAccessToken } from "./refreshAccessToken";
     if (response.status ===401) {
         await refreshAccessToken();
         access = localStorage.getItem("accessToken");
-        response = await fetch(` https://matters-jerusalem-capture-fitted.trycloudflare.com/likes/${postId}/`, {
+        response = await fetch(` https://surrounded-ruby-worm-languages.trycloudflare.com/likes/${postId}/`, {
 
 
             method: "POST",
@@ -49,7 +49,7 @@ export const UnlikePost = async (postId: number) => {
     try {
          let access = localStorage.getItem("accessToken");
 
-    let response = await fetch(` https://matters-jerusalem-capture-fitted.trycloudflare.com/unlike/${postId}/`, {
+    let response = await fetch(` https://surrounded-ruby-worm-languages.trycloudflare.com/unlike/${postId}/`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -60,7 +60,7 @@ export const UnlikePost = async (postId: number) => {
     if(response.status === 401) {
         await refreshAccessToken();
         access = localStorage.getItem("accessToken");
-        response = await fetch(` https://matters-jerusalem-capture-fitted.trycloudflare.com/unlike/${postId}/`, {
+        response = await fetch(` https://surrounded-ruby-worm-languages.trycloudflare.com/unlike/${postId}/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

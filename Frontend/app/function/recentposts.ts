@@ -5,7 +5,7 @@
 export const recentPosts = async () =>{
 
     try {
-        const response = await fetch(' https://matters-jerusalem-capture-fitted.trycloudflare.com/recent-posts/',{
+        const response = await fetch(' https://surrounded-ruby-worm-languages.trycloudflare.com/recent-posts/',{
 
         method : "GET",
 
